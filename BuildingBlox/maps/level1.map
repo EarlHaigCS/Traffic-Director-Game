@@ -1,0 +1,24 @@
+[level]
+tileset = ground.png
+map = .#^**#...*..
+      .#...#...#..
+      .*...*#^....
+      .^.....*....
+      .......#*...
+      ...^........
+
+[.]
+name = street
+tile = 0, 3
+
+[#]
+name = building
+block = true
+
+[*]
+name = bulding2
+block = true
+
+[^]
+name = bulding3
+block = true
