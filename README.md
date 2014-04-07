@@ -33,3 +33,25 @@ Population/ Name/ Unlock/Changes
 * 102400: City-State
 
 * 180000: Galactic Supercenter/ Crown of the Empire (Beat the game)
+
+##Game Suite Main Menu
+
+The game suite’s main menu is the first interface the user is brought to after the game is started. The menu provides three choices – “New City”, “Load Game”, and “Exit”.
+
+Selecting the “New City” choice will allow the user to create a new city. The user can name the city, and is then brought to the City Management Menu.
+
+Clicking the “Load Game” button will prompt the user to find a save file on the computer. The suite will load information from the save file and bring the user to the City Management Menu of the saved city.
+
+Selecting “Exit” will terminate the game suite program.
+
+##City Management Menu
+
+This menu is displayed when a city has been created or loaded. A bar on the top of the display window will show the city’s current population. The user is presented with a variety of choices – “Building Blox”, “ChooChooTrain”, “Traffic Director”, “Achievements”, “Save Game” and “Back to Main Menu”.
+
+Picking any of the first three choices will bring the user to the menu for the chosen mini-game.
+
+Clicking on “Achievements” will display information including the city’s current population and name of the city level. If time permits, this interface may also display high scores for the three mini-games.
+
+Selecting “Save Game” will allow the user to create a save file to be stored on the computer, in order for the game to be continued in the future.
+
+Selecting “Back to Main Menu” will return the user to the game suite main menu.
