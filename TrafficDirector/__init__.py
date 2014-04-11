@@ -19,7 +19,7 @@ class AvoidingCars():
     """
     def run(self):
 
-        width = 800
+        width = 600
         height = 600
 
         pygame.init()
