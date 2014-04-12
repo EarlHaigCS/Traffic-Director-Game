@@ -16,12 +16,10 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 (/Library/Frameworks/Python.framework/Versions/2.7/bin/python)" project-jdk-type="Python SDK" />
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings />
-    </option>
+  <component name="ProjectKey">
+    <option name="state" value="https://github.com/EarlHaigCS/summative.git" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 (C:/Python27/python.exe)" project-jdk-type="Python SDK" />
   <component name="masterDetails">
     <states>
       <state key="ScopeChooserConfigurable.UI">
