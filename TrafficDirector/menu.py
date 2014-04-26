@@ -3,6 +3,8 @@ External Library taken from: https://github.com/BradStevenson/Pygame-Menu
 """
 import pygame
 from pygame.locals import *
+import os
+scriptDir = os.path.dirname(__file__)
 class MenuItem (pygame.font.Font):
 
     def __init__(self, text, position, fontSize=36, antialias=1, color=(255, 255, 255), background=None):
@@ -36,11 +38,12 @@ class Menu():
         self.area = screen.get_rect()
         self.background = pygame.Surface(screen.get_size())
         self.background = self.background.convert()
-        self.background.fill((44, 62, 83, 0.6))
+        image = pygame.image.load(os.path.join(scriptDir, "img/menu.png"))
+        self.background.blit(image, (0,0))
         self.active = False
 
         if pygame.font:
-            fontSize = 36
+            fontSize = 50
             fontSpace = 4
             # loads the standard font with a size of 36 pixels
             # font = pygame.font.Font(None, fontSize)
@@ -54,11 +57,11 @@ class Menu():
             self.menuEntries = list()
             for menuEntry in menuEntries:
                 centerX = self.background.get_width() / 2
-                centerY = startY + fontSize + fontSpace
+                centerY = startY + fontSize + fontSpace + 50
                 newEnty = MenuItem(menuEntry, (centerX, centerY))
                 self.menuEntries.append(newEnty)
                 self.background.blit(newEnty.get_surface(), newEnty.get_pos())
-                startY = startY + fontSize + fontSpace
+                startY = startY + fontSize + fontSpace - 10
 
 
 
@@ -92,5 +95,58 @@ class Menu():
                     pygame.event.post(menuEvent)
                 curItem = curItem + 1
 
+
+
+class PauseMenu(Menu):
+
+    def __init__(self, menuEntries, menuCenter=None):
+        '''
+        The constructer uses a list of string for the menu entries,
+        which need  to be created
+        and a menu center if non is defined, the center of the screen is used
+        '''
+        screen = pygame.display.get_surface()
+        self.area = screen.get_rect()
+        self.background = pygame.Surface(screen.get_size())
+        self.background = self.background.convert()
+        image = pygame.image.load(os.path.join(scriptDir, "img/pauseMenu.png"))
+        self.background.blit(image, (0,0))
+        self.active = False
+
+    def drawMenu(self, score):
+        self.active = True
+        screen = pygame.display.get_surface()
+
+        # render text
+        font=pygame.font.Font(None,30)
+        scoretext=font.render(str(score), 1,(255,255,255))
+        screen.blit(self.background, (0, 0))
+        screen.blit(scoretext, (110, 15))
+
+class GameOverMenu(Menu):
+
+    def __init__(self, menuEntries, menuCenter=None):
+        '''
+        The constructer uses a list of string for the menu entries,
+        which need  to be created
+        and a menu center if non is defined, the center of the screen is used
+        '''
+        screen = pygame.display.get_surface()
+        self.area = screen.get_rect()
+        self.background = pygame.Surface(screen.get_size())
+        self.background = self.background.convert()
+        image = pygame.image.load(os.path.join(scriptDir, "img/gameOverMenu.png"))
+        self.background.blit(image, (0,0))
+        self.active = False
+
+    def drawMenu(self, score):
+        self.active = True
+        screen = pygame.display.get_surface()
+
+        # render text
+        font=pygame.font.Font(None,30)
+        scoretext=font.render(str(score), 1,(255,255,255))
+        screen.blit(self.background, (0, 0))
+        screen.blit(scoretext, (110, 15))
 
 
