@@ -9,13 +9,7 @@ import sys
 scriptDir = os.path.dirname(__file__)
 import yaml
 class AvoidingCars():
-    """
-    Pre:
-    Post:
-    Purpose:
-    """
-    def __init__(self):
-        self.status = False
+
     """
     Pre:
     Post:
@@ -352,16 +346,13 @@ class AvoidingCars():
                 if event.type == KEYDOWN and event.key == K_a:
                     self.restart()
 
+                elif event.type == QUIT:
+                    return
+
             gameOverMenu.drawMenu(turn.score)
 
             pygame.display.flip()
 
-
-    """
-    Pre:
-    Post:
-    Purpose:
-    """
 
     """
     Pre:
