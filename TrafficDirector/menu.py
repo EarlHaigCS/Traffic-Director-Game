@@ -65,10 +65,15 @@ class Menu():
 
 
 
-    def drawMenu(self):
+    def drawMenu(self, highScore):
         self.active = True
         screen = pygame.display.get_surface()
+
         screen.blit(self.background, (0, 0))
+        font=pygame.font.Font(None,20)
+        scoretext=font.render("High Score: " + str(highScore), 1,(255,255,255))
+        screen.blit(self.background, (0, 0))
+        screen.blit(scoretext, (5, 580))
 
     def isActive(self):
         return self.active

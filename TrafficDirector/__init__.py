@@ -61,18 +61,26 @@ class AvoidingCars():
         cars = [Car(), Car(), Car(), Car(), Car(), Car(), Car(), Car(), Car(), Car()]
 
         for k in range(1, city.size, 1):
+
             cars.append(Car())
+
             cars.append(Obstacle(4))
+
             if k == 2:
                 obstacles.append(Obstacle(1))
+
             elif k == 3:
                 obstacles.append(Obstacle(3))
+
             elif k == 4:
                 obstacles.append(Obstacle(2))
+
             elif k == 5:
                 obstacles.append(Obstacle(7))
+
             elif k == 6:
                 obstacles.append(Obstacle(5))
+
             elif k == 7:
                 obstacles.append(Obstacle(6))
 
@@ -82,7 +90,7 @@ class AvoidingCars():
 
         mainMenu = Menu(["Play", " ", "Quit"])
 
-        mainMenu.drawMenu()
+        mainMenu.drawMenu(player.highScore)
 
         pauseMenu = PauseMenu("Resume", "Quit")
 
@@ -144,7 +152,7 @@ class AvoidingCars():
             screen.blit(background, (0, 0))
 
             if mainMenu.isActive():
-                mainMenu.drawMenu()
+                mainMenu.drawMenu(player.highScore)
 
             elif pauseMenu.isActive():
                 turn.updateScore(city)
