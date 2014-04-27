@@ -28,7 +28,7 @@ class AvoidingCars():
 
         screen = pygame.display.set_mode((width, height))
 
-        pygame.display.set_caption('Avoiding Cars Game')
+        pygame.display.set_caption('Traffic Director')
 
         pygame.mouse.set_visible(1)
 
@@ -41,9 +41,13 @@ class AvoidingCars():
         """
         Initializing the game
         """
+
         with open(os.path.join(scriptDir, "../shared_data.yaml"), 'rw') as shared_data:
+
             data = yaml.load(shared_data)
+
         player = Player()
+
         turn = Turn()
 
         city = City(data["shared_data"]["size"], data["shared_data"]["population"])
@@ -92,7 +96,15 @@ class AvoidingCars():
 
         playerImage = pygame.image.load(os.path.join(scriptDir, "img/player.png"))
 
-
+        """
+        The background music settings
+        """
+        pygame.mixer.init()
+        pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/bg.wav"))
+        pygame.mixer.music.play(-1)
+        """
+        Start of the game's main loop
+        """
         while turn.status:
 
             clock.tick(30)
@@ -110,10 +122,15 @@ class AvoidingCars():
                     return
                 # Pausing the game
                 elif event.type == KEYDOWN and event.key == K_ESCAPE:
+
                     if pauseMenu.isActive():
+
                         pauseMenu.deactivate()
+
                     else:
+
                         pauseMenu.activate()
+
                 # Reseting the game
                 elif event.type == KEYDOWN and event.key == K_a:
                     self.restart()
@@ -140,6 +157,8 @@ class AvoidingCars():
 
                     elif event.item == 0:
                         isGameActive = True
+                        pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/traffic.wav"))
+                        pygame.mixer.music.play(-1)
                         mainMenu.deactivate()
                         pauseMenu.deactivate()
 
@@ -184,7 +203,7 @@ class AvoidingCars():
                 """
                 The code for the moving cars
                 """
-                if turn.time > 0.1:
+                if turn.time > 0:
                     for car in cars:
                         try:
                             otherCars = []
@@ -207,7 +226,8 @@ class AvoidingCars():
                                     car.setDir()
 
 
-                            car.updatePosition()
+                            car.updatePosition(turn.time)
+
                             if car.type in [1,2]:
                                 carImage = pygame.image.load(os.path.join(scriptDir, "img/bigCar.png"))
 
@@ -279,11 +299,21 @@ class AvoidingCars():
                         player.position = [player.position[0], player.position[1] - 5]
 
                 elif player.canMove(obstacles, cars) == 2:
+
+                    pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/car_crash.wav"))
+
+                    pygame.mixer.music.play(1)
+
                     turn.updateScore(city)
+
                     player.setHighScore(turn.score)
+
                     turn.endTurn()
+
                 player.updateBounds()
+
                 background.blit(playerImage, player.position)
+
             pygame.display.flip()
 
         """

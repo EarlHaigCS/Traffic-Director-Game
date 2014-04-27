@@ -78,10 +78,10 @@ class Car():
         random = randint(1, 2)
 
         if random == 1:
-            self.speed = 2
+            self.speed = 5
 
         else:
-            self.speed = 5
+            self.speed = 10
 
     def setDir(self):
 
@@ -99,44 +99,46 @@ class Car():
         elif random == 4 and self.position[0] < 800:
             self.direction = "W"
 
-    def updatePosition(self):
+    def updatePosition(self, turnTime):
 
-        if self.direction == "N":
+        if turnTime > 1:
 
-            self.position[1] = self.position[1] - self.speed
+            if self.direction == "N":
 
-            self.bounds = Rect(self.position[0], self.position[1], 36, 50)
+                self.position[1] = self.position[1] - self.speed
 
-            if self.type in [1,2]:
-                self.bounds = Rect(self.position[0], self.position[1], 56, 146)
+                self.bounds = Rect(self.position[0], self.position[1], 36, 50)
 
-        elif self.direction == "E":
+                if self.type in [1,2]:
+                    self.bounds = Rect(self.position[0], self.position[1], 56, 146)
 
-            self.position[0] = self.position[0] - self.speed
+            elif self.direction == "E":
 
-            self.bounds = Rect(self.position[0], self.position[1], 50, 36)
+                self.position[0] = self.position[0] - self.speed
 
-            if self.type in [1,2]:
-                self.bounds = Rect(self.position[0], self.position[1], 146, 56)
+                self.bounds = Rect(self.position[0], self.position[1], 50, 36)
 
-        elif self.direction == "S":
+                if self.type in [1,2]:
+                    self.bounds = Rect(self.position[0], self.position[1], 146, 56)
 
-            self.position[1] = self.position[1] + self.speed
+            elif self.direction == "S":
 
-            self.bounds = Rect(self.position[0], self.position[1], 36, 50)
+                self.position[1] = self.position[1] + self.speed
 
-            if self.type in [1,2]:
-                self.bounds = Rect(self.position[0], self.position[1], 56, 146)
+                self.bounds = Rect(self.position[0], self.position[1], 36, 50)
 
-        elif self.direction == "W":
+                if self.type in [1,2]:
+                    self.bounds = Rect(self.position[0], self.position[1], 56, 146)
 
-            self.position[0] = self.position[0] + self.speed
+            elif self.direction == "W":
 
-            self.bounds = Rect(self.position[0], self.position[1], 50, 36)
+                self.position[0] = self.position[0] + self.speed
 
-            if self.type in [1,2]:
+                self.bounds = Rect(self.position[0], self.position[1], 50, 36)
 
-                self.bounds = Rect(self.position[0], self.position[1], 146, 56)
+                if self.type in [1,2]:
+
+                    self.bounds = Rect(self.position[0], self.position[1], 146, 56)
 
 
 
