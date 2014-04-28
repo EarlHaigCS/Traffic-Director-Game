@@ -71,9 +71,11 @@ class Menu():
 
         screen.blit(self.background, (0, 0))
         font=pygame.font.Font(None,20)
-        scoretext=font.render("High Score: " + str(highScore), 1,(255,255,255))
+        scoreText = font.render("High Score: " + str(highScore), 1,(255,255,255))
+        helpText = font.render("* Press H for help", 1,(255,255,255))
         screen.blit(self.background, (0, 0))
-        screen.blit(scoretext, (5, 580))
+        screen.blit(scoreText, (5, 580))
+        screen.blit(helpText, (400, 470))
 
     def isActive(self):
         return self.active

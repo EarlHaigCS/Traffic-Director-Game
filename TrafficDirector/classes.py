@@ -75,13 +75,17 @@ class Car():
 
     def setSpeed(self):
 
-        random = randint(1, 2)
+        random = randint(1, 3)
 
         if random == 1:
             self.speed = 5
 
-        else:
+        elif randint == 2:
             self.speed = 10
+
+        else:
+            self.speed = 15
+
 
     def setDir(self):
 
@@ -188,7 +192,7 @@ class Turn():
 
     def updateScore(self, city):
 
-        self.score = city.population * self.time
+        self.score = round(city.population * self.time,0)
 
     def endTurn(self):
 
