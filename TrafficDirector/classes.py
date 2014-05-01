@@ -78,13 +78,13 @@ class Car():
         random = randint(1, 3)
 
         if random == 1:
-            self.speed = 5
+            self.speed = 4
 
         elif randint == 2:
-            self.speed = 10
+            self.speed = 8
 
         else:
-            self.speed = 15
+            self.speed = 12
 
 
     def setDir(self):

@@ -4,10 +4,11 @@ from classes import *
 from menu import *
 import os
 from math import *
+import time
 import sqlite3
 import sys
-scriptDir = os.path.dirname(__file__)
 import yaml
+scriptDir = os.path.dirname(__file__)
 class AvoidingCars():
 
     """
@@ -24,26 +25,80 @@ class AvoidingCars():
 
         height = 600
 
-        pygame.init()
 
-        screen = pygame.display.set_mode((width, height))
-
-        pygame.display.set_caption('Traffic Director')
-
-        pygame.mouse.set_visible(1)
-
-        background = pygame.Surface(screen.get_size())
-
-        background = background.convert()
-
-        clock = pygame.time.Clock()
 
         def runMainLoop():
+
+            def updateDatabase():
+
+                with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
+
+                    data["TrafficDirector"]["highScore"] = round(player.highScore, 0)
+
+                    data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
+
+                    data["shared_data"]["multiplier"] = data["shared_data"]["multiplier"] + log10(abs(turn.score)) / 1000
+
+                    if data["shared_data"]["population"] > 0 :
+                        citySize = 1
+
+                    if data["shared_data"]["population"] > 200:
+                        citySize = 2
+
+                    if data["shared_data"]["population"] > 400:
+                        citySize = 3
+
+                    if data["shared_data"]["population"] > 800:
+                        citySize = 4
+
+                    if data["shared_data"]["population"] > 1600:
+                        citySize = 5
+
+                    if data["shared_data"]["population"] > 3200:
+                        citySize = 6
+
+                    if data["shared_data"]["population"] > 6400:
+                        citySize = 7
+
+                    if data["shared_data"]["population"] > 12800:
+                        citySize = 8
+
+                    if data["shared_data"]["population"] > 25600:
+                        citySize = 9
+
+                    if data["shared_data"]["population"] > 51200:
+                        citySize = 10
+
+                    if data["shared_data"]["population"] > 102400:
+                        citySize = 11
+
+                    if data["shared_data"]["population"] > 180000:
+                        citySize = 12
+
+                    data["shared_data"]["size"] = citySize
+
+                    shared_data.write(yaml.dump(data=data))
+
             """
             Initializing the game
             """
+            pygame.init()
 
-            with open(os.path.join(scriptDir, "../shared_data.yaml"), 'rw') as shared_data:
+            screen = pygame.display.set_mode((width, height))
+
+            pygame.display.set_caption('Traffic Director')
+
+            pygame.mouse.set_visible(1)
+
+            background = pygame.Surface(screen.get_size())
+
+            background = background.convert()
+
+            clock = pygame.time.Clock()
+
+            startTime = time.time()
+
+            with open(os.path.join(scriptDir, "../shared_data.yaml"), 'r') as shared_data:
 
                 data = yaml.load(shared_data)
 
@@ -95,6 +150,8 @@ class AvoidingCars():
 
             gameOverMenu = GameOverMenu("")
 
+            gameOver = False
+
             playerImage = pygame.image.load(os.path.join(scriptDir, "img/player.png"))
 
             """
@@ -110,7 +167,7 @@ class AvoidingCars():
 
                 clock.tick(30)
 
-                turn.time = pygame.time.get_ticks() / 1000
+                turn.time = time.time() - startTime
                 """
                 The event handlers
                 """
@@ -131,9 +188,6 @@ class AvoidingCars():
                         else:
                              pauseMenu.activate()
 
-                    # Reseting the game
-                    elif event.type == KEYDOWN and event.key == K_a:
-                        runMainLoop()
 
                     # Moving UP
                     elif event.type == KEYDOWN and event.key == K_UP:
@@ -152,15 +206,27 @@ class AvoidingCars():
                         player.direction = "E"
                     # Handling the Menu Input
 
-                    elif event.type == mainMenu.MENUCLICKEDEVENT:
-                        if event.text == "Quit":
-                            return
+                    elif event.type == MOUSEBUTTONDOWN and mainMenu.isActive():
+                        mousePosition = pygame.mouse.get_pos()
 
-                        elif event.item == 0:
-                            pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/traffic.wav"))
-                            pygame.mixer.music.play(-1)
-                            mainMenu.deactivate()
-                            pauseMenu.deactivate()
+                        if mousePosition[0] > 300 and  mousePosition[0] < 600:
+
+                            if mousePosition[1] > 280 and mousePosition[1] < 350:
+
+                                pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/traffic.wav"))
+
+                                pygame.mixer.music.play(-1)
+
+                                mainMenu.deactivate()
+
+                                pauseMenu.deactivate()
+
+                            elif mousePosition[1] > 370 and mousePosition[1] < 450:
+
+                                turn.status = True
+
+                                return
+
 
                 screen.blit(background, (0, 0))
 
@@ -175,7 +241,20 @@ class AvoidingCars():
                     gameOverMenu.drawMenu(turn.score)
 
                 else:
+
+                    """
+                    The code for setting up the game screen
+                    """
                     background.fill((153,153,153))
+                    # render text
+                    turn.updateScore(city)
+
+                    font=pygame.font.Font(None,30)
+
+                    scoretext=font.render("Score: " + str(turn.score), 1,(255,255,255))
+
+                    screen.blit(scoretext, (110, 15))
+
                     """
                     The code for generating the map
                     """
@@ -203,7 +282,7 @@ class AvoidingCars():
                     """
                     The code for the moving cars
                     """
-                    if turn.time > 0:
+                    if turn.time > -1:
                         for car in cars:
                             try:
                                 otherCars = []
@@ -311,71 +390,24 @@ class AvoidingCars():
 
                         turn.endTurn()
 
+                        gameOver = True
+
                     player.updateBounds()
 
                     background.blit(playerImage, player.position)
 
                 pygame.display.flip()
 
-            """
-            Saving the updates to the database
-            """
 
-            with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
-
-                data["TrafficDirector"]["highScore"] = round(player.highScore, 0)
-
-                data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
-
-                data["shared_data"]["multiplier"] = data["shared_data"]["multiplier"] + log10(turn.score) / 100
-
-                if data["shared_data"]["population"] > 0 :
-                    citySize = 1
-
-                if data["shared_data"]["population"] > 200:
-                    citySize = 2
-
-                if data["shared_data"]["population"] > 400:
-                    citySize = 3
-
-                if data["shared_data"]["population"] > 800:
-                    citySize = 4
-
-                if data["shared_data"]["population"] > 1600:
-                    citySize = 5
-
-                if data["shared_data"]["population"] > 3200:
-                    citySize = 6
-
-                if data["shared_data"]["population"] > 6400:
-                    citySize = 7
-
-                if data["shared_data"]["population"] > 12800:
-                    citySize = 8
-
-                if data["shared_data"]["population"] > 25600:
-                    citySize = 9
-
-                if data["shared_data"]["population"] > 51200:
-                    citySize = 10
-
-                if data["shared_data"]["population"] > 102400:
-                    citySize = 11
-
-                if data["shared_data"]["population"] > 180000:
-                    citySize = 12
-
-                data["shared_data"]["size"] = citySize
-
-                shared_data.write(yaml.dump(data=data,))
-
-            while True:
+            while gameOver:
 
                 for event in pygame.event.get():
 
                     # Starting the game over
                     if event.type == KEYDOWN and event.key == K_a:
+                        updateDatabase()
                         runMainLoop()
+                        return
 
                     elif event.type == QUIT:
                         return
@@ -385,6 +417,7 @@ class AvoidingCars():
                 pygame.display.flip()
 
         runMainLoop()
+        return
 
     """
     Pre:

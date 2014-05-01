@@ -1,3 +1,3 @@
-TrafficDirector: {highScore: 209360.0}
-shared_data: {anti_crime: 1, multiplier: 2.7224679295730088, population: 2669.0, raw_population: 1000,
-  size: 5}
+TrafficDirector: {highScore: 15256.0}
+shared_data: {anti_crime: 0, multiplier: 1.5632917837325073, population: 780.0, raw_population: 500,
+  size: 3}
