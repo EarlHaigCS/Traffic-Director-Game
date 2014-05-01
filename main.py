@@ -3,6 +3,10 @@ import pygame
 from random import randint
 from pygame.locals import *
 from TrafficDirector import *
+from BuildingBlox import *
+from ChooChooTrain import *
+
+
 scriptDir = os.path.dirname(__file__)
 
 def loadGame(type):
@@ -72,13 +76,23 @@ while running:
 
                     gameMenu = False
                     welcomeMenu= True
-            # Starting a game
-            if mousePosition[0] > 670 and  mousePosition[0] < 850:
 
-                if mousePosition[1] > 400 and mousePosition[1] < 580:
+            if mousePosition[1] > 400 and mousePosition[1] < 580:
+                # Starting traffic director  game
+                if mousePosition[0] > 670 and  mousePosition[0] < 850:
 
                     trafficDirector = AvoidingCars()
                     trafficDirector.run()
+                # Starting building blox game
+                if mousePosition[0] > 470 and  mousePosition[0] < 650:
+
+                    buildingBlox = BuildingBlox()
+                    buildingBlox.run()
+                # Starting  choo choo train game
+                if mousePosition[0] > 260 and  mousePosition[0] < 440:
+
+                    chooChooTrain = ChooChooTrain()
+                    chooChooTrain.run()
 
             #saving the game
             if mousePosition[0] > 10 and mousePosition[0] < 120:
@@ -194,7 +208,15 @@ while running:
 
         info  = font.render("High Score: " + str(data["TrafficDirector"]["highScore"]),  1,(255,255,255))
 
-        screen.blit(info, (680, 550))
+        screen.blit(info, (680, 560))
+
+        info  = font.render("High Score: " + str(data["BuildingBlox"]["highScore"]),  1,(255,255,255))
+
+        screen.blit(info, (480, 560))
+
+        info  = font.render("High Score: " + str(data["ChooChooTrain"]["highScore"]),  1,(255,255,255))
+
+        screen.blit(info, (270, 560))
 
 
     else:
