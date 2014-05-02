@@ -1,7 +1,4 @@
-import pygame
-from pygame.locals import *
-from classes import *
-from menu import *
-import os
+class BuildingBlox():
 
-# main code
+    def run(self):
+        pass
