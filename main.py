@@ -1,35 +1,32 @@
-
+"""
+Coded by: Khashayar Pourdeilami
+Yaml library is used to parse yaml files. (pyyaml)
+Pygame is the game engine used to make this game.
+"""
 import pygame
+import pyglet
 from random import randint
 from pygame.locals import *
 from TrafficDirector import *
 from BuildingBlox import *
 from ChooChooTrain import *
-
-
 scriptDir = os.path.dirname(__file__)
 
-def loadGame(type):
 
-    if type == "existing":
-        pass
-    elif type == "new": # starting a new game and discarding the one in the memory!
+"""
+Pre:
+Post:
+Purpose:
+"""
+def newGame():
 
-        with open(os.path.join(scriptDir, "new_game_shared_data.yaml"), 'r') as new_shared_data:
+    with open(os.path.join(scriptDir, "new_game_shared_data.yaml"), 'r') as new_shared_data:
 
             new_data = yaml.load(new_shared_data)
 
     with open(os.path.join(scriptDir, "shared_data.yaml"), 'w') as shared_data:
 
         shared_data.write(yaml.dump(data=new_data))
-
-def newGame():
-
-    loadGame("new")
-
-def saveGame():
-
-    pass
 
 
 
@@ -81,7 +78,7 @@ while running:
                 # Starting traffic director  game
                 if mousePosition[0] > 670 and  mousePosition[0] < 850:
 
-                    trafficDirector = AvoidingCars()
+                    trafficDirector = TrafficDirector()
                     trafficDirector.run()
                 # Starting building blox game
                 if mousePosition[0] > 470 and  mousePosition[0] < 650:
@@ -94,12 +91,6 @@ while running:
                     chooChooTrain = ChooChooTrain()
                     chooChooTrain.run()
 
-            #saving the game
-            if mousePosition[0] > 10 and mousePosition[0] < 120:
-
-                if mousePosition[1] > 10 and mousePosition[1] < 50:
-
-                    saveGame()
 
         elif ev.type == MOUSEBUTTONDOWN:
 
@@ -120,16 +111,11 @@ while running:
 
                 elif mousePosition[1] < 300 and mousePosition[1] > 260:
 
-                    loadGame("existing")
-
-                elif mousePosition[1] < 400 and mousePosition[1] > 360:
-
                     running = False
 
+
     if welcomeMenu:
-
-        image = pygame.image.load(os.path.join(scriptDir, "img/menu.png"))
-
+        image = pygame.image.load(os.path.join(scriptDir, "img/menu.png")).convert_alpha()
         screen.blit(image, (0,0))
 
     elif gameMenu:

@@ -6,7 +6,11 @@ from pygame.locals import *
 import os
 scriptDir = os.path.dirname(__file__)
 class MenuItem (pygame.font.Font):
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def __init__(self, text, position, fontSize=36, antialias=1, color=(255, 255, 255), background=None):
         pygame.font.Font.__init__(self, None, fontSize)
         self.text = text
@@ -16,10 +20,25 @@ class MenuItem (pygame.font.Font):
             self.textSurface = self.render(self.text, antialias, (255, 255, 255), background)
 
         self.position = self.textSurface.get_rect(centerx=position[0], centery=position[1])
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def get_pos(self):
         return self.position
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def get_text(self):
         return self.text
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def get_surface(self):
         return self.textSurface
 
@@ -27,7 +46,11 @@ class MenuItem (pygame.font.Font):
 class Menu():
 
     MENUCLICKEDEVENT = USEREVENT + 1
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def __init__(self, menuEntries, menuCenter=None):
         '''
         The constructer uses a list of string for the menu entries,
@@ -64,7 +87,11 @@ class Menu():
                 startY = startY + fontSize + fontSpace - 10
 
 
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def drawMenu(self, highScore):
         self.active = True
         screen = pygame.display.get_surface()
@@ -76,13 +103,32 @@ class Menu():
         screen.blit(self.background, (0, 0))
         screen.blit(scoreText, (5, 580))
         screen.blit(helpText, (400, 470))
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def isActive(self):
         return self.active
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def activate(self,):
         self.active = True
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def deactivate(self):
         self.active = False
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def handleEvent(self, event):
         # only send the event if menu is active
         if event.type == MOUSEBUTTONDOWN and self.isActive():
@@ -105,7 +151,11 @@ class Menu():
 
 
 class PauseMenu(Menu):
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def __init__(self, menuEntries, menuCenter=None):
         '''
         The constructer uses a list of string for the menu entries,
@@ -119,7 +169,11 @@ class PauseMenu(Menu):
         image = pygame.image.load(os.path.join(scriptDir, "img/pauseMenu.png"))
         self.background.blit(image, (0,0))
         self.active = False
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def drawMenu(self, score):
         self.active = True
         screen = pygame.display.get_surface()
@@ -131,7 +185,11 @@ class PauseMenu(Menu):
         screen.blit(scoretext, (110, 15))
 
 class GameOverMenu(Menu):
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def __init__(self, menuEntries, menuCenter=None):
         '''
         The constructer uses a list of string for the menu entries,
@@ -145,7 +203,11 @@ class GameOverMenu(Menu):
         image = pygame.image.load(os.path.join(scriptDir, "img/gameOverMenu.png"))
         self.background.blit(image, (0,0))
         self.active = False
-
+    """
+    Pre:
+    Post:
+    Purpose:
+    """
     def drawMenu(self, score):
         self.active = True
         screen = pygame.display.get_surface()

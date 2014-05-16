@@ -1,3 +1,7 @@
+"""
+Coded by: Khashayar Pourdeilami
+Pygame is the game engine used to make this game.
+"""
 import pygame
 from pygame.locals import *
 import ConfigParser
@@ -6,7 +10,11 @@ from random import randint
 scriptDir = os.path.dirname(__file__)
 
 class Player():
-
+    """
+    Pre: -
+    Post: The player bounds, position, direction and high score will be initialized.
+    Purpose: To initialize the player.
+    """
     def __init__(self):
 
         self.highScore = 0
@@ -16,19 +24,32 @@ class Player():
         self.bounds = Rect(self.position[0], self.position[1], 25, 25)
 
         self.direction = "N"
-
+    """
+    Pre: The score must be inputted
+    Post: To update the user high score if the score was bigger than the previous high score.
+    Purpose: To set the user high score.
+    """
     def setHighScore(self, score):
 
         if score > self.highScore:
             self.highScore = score
-
+    """
+    Pre: The obstacles list and the cars list must be inputted
+    Post: Returns 2 if the user is hit by a car, returns 3 if the user is trying to go out of the screen and returns 1
+    if the user can't move because of an obstacle and returns 0 if the user can move freely.
+    Purpose: To determine where the user can move to.
+    """
     def canMove(self, obstacles, cars):
 
         screen = Rect(0 , 0, 900, 600)
 
         for car in cars:
             if self.bounds.colliderect(car.bounds) or car.bounds.colliderect(self.bounds):
-                return 2
+                try:
+                    if car.status == True:
+                        return 4
+                except:
+                    return 2
 
         for obstacle in obstacles:
             if self.bounds.colliderect(obstacle.bounds):
@@ -37,23 +58,33 @@ class Player():
         if not screen.contains(self.bounds):
             return 3
         return 0
-
+    """
+    Pre: -
+    Post: updates the bounds rectangle for the player.
+    Purpose: to update the position of the player's collision detectors.
+    """
     def updateBounds(self):
         self.bounds = Rect(self.position[0], self.position[1], 25, 25)
 
 class City():
 
+    """
+    Pre: the size and population must be inputted
+    Post: sets the size and population attributes to the inputted ones.
+    Purpose: to set up the city.
+    """
     def __init__(self, size, population):
 
         self.size = size
 
         self.population = population
 
-    def increasePopulation(self):
-        pass
-
 class Car():
-
+    """
+    Pre: -
+    Post: Initializes the car object in terms of spped, direction, bounds and type.
+    Purpose: to set up the cars.
+    """
     def __init__(self):
 
         self.speed = 0
@@ -68,11 +99,15 @@ class Car():
 
         self.setDir()
 
-        self.type = randint(3,6)
+        self.type = randint(4,6)
 
         if self.type in [1,2]:
-            self.bounds = Rect(self.position[0], self.position[1], 146, 56)
-
+            self.bounds = Rect(self.position[0], self.position[1], 110, 42)
+    """
+    Pre: -
+    Post: sets a new random speed to the car
+    Purpose: to change the car's speed
+    """
     def setSpeed(self):
 
         random = randint(1, 3)
@@ -86,7 +121,11 @@ class Car():
         else:
             self.speed = 12
 
-
+    """
+    Pre: -
+    Post: sets a new direction for the car based on the car's position and a random number.
+    Purpose:
+    """
     def setDir(self):
 
         random = randint(1, 4)
@@ -102,7 +141,11 @@ class Car():
 
         elif random == 4 and self.position[0] < 800:
             self.direction = "W"
-
+    """
+    Pre: -
+    Post: updates the position of the car based on the car's direction and speed, also updates the car's bounds.
+    Purpose: to update the car's position.
+    """
     def updatePosition(self, turnTime):
 
         if turnTime > 1:
@@ -114,7 +157,7 @@ class Car():
                 self.bounds = Rect(self.position[0], self.position[1], 36, 50)
 
                 if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 56, 146)
+                    self.bounds = Rect(self.position[0], self.position[1], 42, 110)
 
             elif self.direction == "E":
 
@@ -123,7 +166,7 @@ class Car():
                 self.bounds = Rect(self.position[0], self.position[1], 50, 36)
 
                 if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 146, 56)
+                    self.bounds = Rect(self.position[0], self.position[1], 110, 42)
 
             elif self.direction == "S":
 
@@ -132,7 +175,7 @@ class Car():
                 self.bounds = Rect(self.position[0], self.position[1], 36, 50)
 
                 if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 56, 146)
+                    self.bounds = Rect(self.position[0], self.position[1], 42, 110)
 
             elif self.direction == "W":
 
@@ -142,12 +185,16 @@ class Car():
 
                 if self.type in [1,2]:
 
-                    self.bounds = Rect(self.position[0], self.position[1], 146, 56)
+                    self.bounds = Rect(self.position[0], self.position[1], 110, 42)
 
 
 
 class Obstacle():
-
+    """
+    Pre: the size must be inputted
+    Post: initializes the obstacle based on the size inputted.
+    Purpose: to set up the obstacles.
+    """
     def __init__(self, size):
 
         self.size = size
@@ -182,6 +229,11 @@ class Obstacle():
         self.status = True
 
 class Turn():
+    """
+    Pre: -
+    Post: initializes the turn instance.
+    Purpose: to set up the current turn.
+    """
     def __init__(self):
 
         self.time = 0
@@ -189,11 +241,19 @@ class Turn():
         self.score = 0
 
         self.status = True
-
+    """
+    Pre: the city object must be inputted.
+    Post: to update the turn score based on the time and city population.
+    Purpose: to calculated the turn score.
+    """
     def updateScore(self, city):
 
-        self.score = round(city.population * self.time,0)
-
+        self.score = round(city.population * self.time,1)
+    """
+    Pre: -
+    Post: sets the turn status to false.
+    Purpose: to end the turn.
+    """
     def endTurn(self):
 
         self.status = False
