@@ -2,21 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TrafficDirector/img/vampire.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TrafficDirector/movie/help.mp4" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TrafficDirector/movie/help.mpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/setup.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/menu.png" afterPath="$PROJECT_DIR$/img/menu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/menu.psd" afterPath="$PROJECT_DIR$/img/menu.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/player.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/player.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/status.png" afterPath="$PROJECT_DIR$/img/status.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/__init__.py" afterPath="$PROJECT_DIR$/BuildingBlox/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/__init__.py" afterPath="$PROJECT_DIR$/TrafficDirector/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/classes.py" afterPath="$PROJECT_DIR$/TrafficDirector/classes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/menu.py" afterPath="$PROJECT_DIR$/TrafficDirector/menu.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new_game_shared_data.yaml" afterPath="$PROJECT_DIR$/new_game_shared_data.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/Wire.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/Wire.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/blankTile.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/blankTile.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueBase.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueBase.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/blueChoice.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/blueChoice.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/blueComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/blueComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/blueIncomp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/blueIncomp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueTop.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueTop.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueUnit.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/blueUnit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/cable.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/cable.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/choiceTile.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/choiceTile.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenBase.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenBase.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/greenChoice.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/greenChoice.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/greenComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/greenComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/greenIncomp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/greenIncomp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenTop.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenTop.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenUnit.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/greenUnit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/hook.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/hook.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/hookwire.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/hookwire.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/redBase.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/redBase.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/redChoice.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/redChoice.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/redComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/redComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/redIncomp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/redIncomp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/redTop.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/redTop.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/redUnit.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/redUnit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/sky.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/sky.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowBase.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowBase.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/yellowChoice.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/yellowChoice.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/yellowComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/yellowComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/City/yellowIncomp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/City/yellowIncomp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowTop.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowTop.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowUnit.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/yellowUnit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/bbclasses.py" afterPath="$PROJECT_DIR$/BuildingBlox/bbclasses.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/bbmenu.py" afterPath="$PROJECT_DIR$/BuildingBlox/bbmenu.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/cityBuilding.py" afterPath="$PROJECT_DIR$/BuildingBlox/cityBuilding.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/summative.iml" afterPath="$PROJECT_DIR$/.idea/summative.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/test.py" afterPath="$PROJECT_DIR$/BuildingBlox/test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/towerBuilding.py" afterPath="$PROJECT_DIR$/BuildingBlox/towerBuilding.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="summative.iws" />
@@ -52,7 +74,7 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.23121387" vertical-offset="0" max-vertical-offset="3240">
+            <state line="8" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.23210831" vertical-offset="0" max-vertical-offset="3240">
               <folding />
             </state>
           </provider>
@@ -80,7 +102,9 @@
         <entry file="file://$PROJECT_DIR$/shared_data.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <folding />
+              <folding>
+                <marker date="1400282497000" expanded="true" signature="98:189" placeholder="shared_data:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -138,9 +162,9 @@
         <option value="$PROJECT_DIR$/testing.py" />
         <option value="$PROJECT_DIR$/new_game_shared_data.yaml" />
         <option value="$PROJECT_DIR$/shared_data.yaml" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/TrafficDirector/classes.py" />
         <option value="$PROJECT_DIR$/TrafficDirector/__init__.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -180,32 +204,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="summative" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/Library/Frameworks/Python.framework/Versions/2.7/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wx-3.0-osx_cocoa" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="summative" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="&lt; Python 2.7.6 (/Library/Frameworks/Python.framework/Versions/2.7/bin/python) &gt;" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -293,11 +291,6 @@
     <property name="SearchEverywhereHistory" value="" />
     <property name="dynamic.classpath" value="false" />
     <property name="database.results.filters.show" value="false" />
-  </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings />
-    </option>
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -569,23 +562,6 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="" />
@@ -593,26 +569,6 @@
       <updated>1397236205547</updated>
     </task>
     <servers />
-  </component>
-  <component name="TodoView" selected-index="0">
-    <todo-panel id="selected-file">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
-    <todo-panel id="default-changelist">
-      <are-packages-shown value="false" />
-      <are-modules-shown value="false" />
-      <flatten-packages value="false" />
-      <is-autoscroll-to-source value="false" />
-    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -627,7 +583,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32692307" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32771084" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -986,7 +942,9 @@
     <entry file="file://$PROJECT_DIR$/shared_data.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <folding />
+          <folding>
+            <marker date="1400282497000" expanded="true" signature="98:189" placeholder="shared_data:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1015,7 +973,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.23121387" vertical-offset="0" max-vertical-offset="3240">
+        <state line="8" column="19" selection-start="215" selection-end="215" vertical-scroll-proportion="0.23210831" vertical-offset="0" max-vertical-offset="3240">
           <folding />
         </state>
       </provider>

@@ -273,6 +273,10 @@ def TowerBuilding(colour):
             screen.blit(rotImg, (blockx, blocky))
         elif haveblock == True:
             blitblock = True
+<<<<<<< HEAD
         pygame.display.flip() #<-- refresh the display
 
 
+=======
+        pygame.display.flip() #<-- refresh the display
+>>>>>>> FETCH_HEAD
