@@ -4,7 +4,6 @@ Pygame is the game engine used to make this game.
 """
 import pygame
 from pygame.locals import *
-import ConfigParser
 import os
 from random import randint
 scriptDir = os.path.dirname(__file__)

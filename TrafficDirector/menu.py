@@ -7,9 +7,9 @@ import os
 scriptDir = os.path.dirname(__file__)
 class MenuItem (pygame.font.Font):
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: text and  position must be inputted
+    Post: to initialize the text, font, position and color of the menu item using the inputted values.
+    Purpose: to set up the menu items.
     """
     def __init__(self, text, position, fontSize=36, antialias=1, color=(255, 255, 255), background=None):
         pygame.font.Font.__init__(self, None, fontSize)
@@ -21,23 +21,23 @@ class MenuItem (pygame.font.Font):
 
         self.position = self.textSurface.get_rect(centerx=position[0], centery=position[1])
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: returns the position of the menu item
+    Purpose: to get the position of the menu item.
     """
     def get_pos(self):
         return self.position
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: returns the text of the menu entry
+    Purpose: to get the text of the menu entry
     """
     def get_text(self):
         return self.text
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: returns the surface that needs to blitted onto the screen.
+    Purpose: to get the menu entry surface.
     """
     def get_surface(self):
         return self.textSurface
@@ -47,9 +47,9 @@ class Menu():
 
     MENUCLICKEDEVENT = USEREVENT + 1
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: The menu entries must be inputted
+    Post: sets up the menu based on the inputted entries.
+    Purpose: To set up the menu
     """
     def __init__(self, menuEntries, menuCenter=None):
         '''
@@ -88,9 +88,9 @@ class Menu():
 
 
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: highScore must be inputted
+    Post: prints the text and image of the menu to screen.
+    Purpose: to show the menu
     """
     def drawMenu(self, highScore):
         self.active = True
@@ -104,30 +104,30 @@ class Menu():
         screen.blit(scoreText, (5, 580))
         screen.blit(helpText, (400, 470))
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: Returns if the menu is active or not as true or false
+    Purpose: to see if the menu is active or not
     """
     def isActive(self):
         return self.active
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: sets the active attribute to true.
+    Purpose: activates the menu
     """
     def activate(self,):
         self.active = True
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: sets the active attribute to false
+    Purpose: deactivates the menu
     """
     def deactivate(self):
         self.active = False
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: -
+    Post: handles the mouse click event for the menu entries.
+    Purpose: to detect the clicks on the menu entries.
     """
     def handleEvent(self, event):
         # only send the event if menu is active
@@ -152,9 +152,9 @@ class Menu():
 
 class PauseMenu(Menu):
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: The menu entries must be inputted
+    Post: sets up the menu based on the inputted entries.
+    Purpose: To set up the menu
     """
     def __init__(self, menuEntries, menuCenter=None):
         '''
@@ -170,9 +170,9 @@ class PauseMenu(Menu):
         self.background.blit(image, (0,0))
         self.active = False
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: highScore must be inputted
+    Post: prints the text and image of the menu to screen.
+    Purpose: to show the menu
     """
     def drawMenu(self, score):
         self.active = True
@@ -186,9 +186,9 @@ class PauseMenu(Menu):
 
 class GameOverMenu(Menu):
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: The menu entries must be inputted
+    Post: sets up the menu based on the inputted entries.
+    Purpose: To set up the menu
     """
     def __init__(self, menuEntries, menuCenter=None):
         '''
@@ -204,9 +204,9 @@ class GameOverMenu(Menu):
         self.background.blit(image, (0,0))
         self.active = False
     """
-    Pre:
-    Post:
-    Purpose:
+    Pre: highScore must be inputted
+    Post: prints the text and image of the menu to screen.
+    Purpose: to show the menu
     """
     def drawMenu(self, score):
         self.active = True

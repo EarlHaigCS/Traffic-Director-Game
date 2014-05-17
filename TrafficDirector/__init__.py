@@ -309,7 +309,7 @@ class TrafficDirector():
                         # load the obstacle image based on the obstacle type.
                         if obstacle.size == 1:
                             image = pygame.image.load(os.path.join(scriptDir, "img/building2.png"))
-
+                            obstacle.bounds = Rect(obstacle.position[0] ,obstacle.position[1], 110, 110) # set the bounds to detect collisions
                         elif obstacle.size == 2:
                             image = pygame.image.load(os.path.join(scriptDir, "img/park.png"))
 
@@ -318,12 +318,15 @@ class TrafficDirector():
 
                         elif obstacle.size == 5:
                             image = pygame.image.load(os.path.join(scriptDir, "img/building2.png"))
+                            obstacle.bounds = Rect(obstacle.position[0] ,obstacle.position[1], 110, 110) # set the bounds to detect collisions
 
                         elif obstacle.size == 6:
                             image = pygame.image.load(os.path.join(scriptDir, "img/park.png"))
 
                         elif obstacle.size == 7:
                             image = pygame.image.load(os.path.join(scriptDir, "img/building2.png"))
+                            obstacle.bounds = Rect(obstacle.position[0] ,obstacle.position[1], 110, 110) # set the bounds to detect collisions
+
                         # print the obstacle to the screen based on the obstacle's position.
                         background.blit(image, [obstacle.position[0], obstacle.position[1]])
 
