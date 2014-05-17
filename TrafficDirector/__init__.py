@@ -12,6 +12,7 @@ import os
 from math import *
 import time
 import yaml
+import webbrowser
 scriptDir = os.path.dirname(__file__)
 class TrafficDirector():
 
@@ -62,8 +63,9 @@ class TrafficDirector():
                     """
                     A set of if statements to determine the city size.
 
-                    Although the elif could have been used instead of all these if statements, it is more efficient to do
-                    do it this way.
+                     Although I could have used range and elif statements but because it is less likely for the population to be less than
+                    6400 so using ranges uses more memory. For example if the the population is 7000, the elif statements would do 14
+                    requests but using  if statements, only 7 requests will be made.
 
                     The citySize variable is used to generate the map.
                     """
@@ -225,7 +227,8 @@ class TrafficDirector():
                         else:
                              pauseMenu.activate()
 
-
+                    elif event.type == KEYDOWN and event.key == K_h and mainMenu.isActive():
+                        webbrowser.open("https://drive.google.com/file/d/0ByDvzb7bEi3qdlJqbnpWbGtDU0U/edit?usp=sharing")
                     # Moving UP
                     elif event.type == KEYDOWN and event.key == K_UP:
                         player.direction = "N"

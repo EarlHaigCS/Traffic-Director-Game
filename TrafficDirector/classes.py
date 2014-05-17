@@ -18,9 +18,9 @@ class Player():
     def __init__(self):
 
         self.highScore = 0
-
+        # player's initial position is at the center
         self.position = [450, 300]
-
+        # bounds are used to detect collisions.
         self.bounds = Rect(self.position[0], self.position[1], 25, 25)
 
         self.direction = "N"
@@ -31,40 +31,40 @@ class Player():
     """
     def setHighScore(self, score):
 
-        if score > self.highScore:
+        if score > self.highScore: # the current turn score was bigger than the high score, set it as the high score.
             self.highScore = score
     """
     Pre: The obstacles list and the cars list must be inputted
     Post: Returns 2 if the user is hit by a car, returns 3 if the user is trying to go out of the screen and returns 1
-    if the user can't move because of an obstacle and returns 0 if the user can move freely.
+    if the user can't move because of an obstacle and returns 0 if the user can move freely. Also it returns 4 if the user catches a star.
     Purpose: To determine where the user can move to.
     """
     def canMove(self, obstacles, cars):
 
-        screen = Rect(0 , 0, 900, 600)
-
+        screen = Rect(0 , 0, 900, 600) # the screen rectangle.
+        # for every car in the cars list
         for car in cars:
-            if self.bounds.colliderect(car.bounds) or car.bounds.colliderect(self.bounds):
-                try:
+            if self.bounds.colliderect(car.bounds) or car.bounds.colliderect(self.bounds): # if the car hit the player
+                try: # check to see if it is a star or a car
                     if car.status == True:
-                        return 4
-                except:
+                        return 4 # return 4 if it was a star.
+                except: # if it was a car return 2
                     return 2
 
-        for obstacle in obstacles:
-            if self.bounds.colliderect(obstacle.bounds):
+        for obstacle in obstacles: # for all obstacles
+            if self.bounds.colliderect(obstacle.bounds): # if the player is about to enter an obstacle return 1
                 return 1
 
-        if not screen.contains(self.bounds):
+        if not screen.contains(self.bounds): # if the player is out of the screen return 3
             return 3
-        return 0
+        return 0 # if everything is fine, return 0
     """
     Pre: -
     Post: updates the bounds rectangle for the player.
     Purpose: to update the position of the player's collision detectors.
     """
     def updateBounds(self):
-        self.bounds = Rect(self.position[0], self.position[1], 25, 25)
+        self.bounds = Rect(self.position[0], self.position[1], 25, 25) # update the bounds of the player as it moves.
 
 class City():
 
@@ -87,29 +87,29 @@ class Car():
     """
     def __init__(self):
 
-        self.speed = 0
+        self.speed = 0 # the default speed for the cars
 
-        self.direction = "N"
+        self.direction = "N" # the default direction for the cars
 
-        self.position = [randint(0, 900), randint(0, 600)]
+        self.position = [randint(0, 900), randint(0, 600)] # randomly place the car
 
-        self.bounds = Rect(self.position[0], self.position[1], 36, 50)
+        self.bounds = Rect(self.position[0], self.position[1], 36, 50) # bounds used to detect collisions.
 
-        self.setSpeed()
+        self.setSpeed() # randomly assign a speed
 
-        self.setDir()
+        self.setDir() # randomly set the direction
 
-        self.type = randint(4,6)
+        self.type = randint(3,6) # used to include different types of cars.
 
-        if self.type in [1,2]:
-            self.bounds = Rect(self.position[0], self.position[1], 110, 42)
+        if self.type in [1,2]: # if the car type was big
+            self.bounds = Rect(self.position[0], self.position[1], 110, 42) # set new bounds to match the car size.
     """
     Pre: -
     Post: sets a new random speed to the car
     Purpose: to change the car's speed
     """
     def setSpeed(self):
-
+        # random used to randomly assign a speed to the cars.
         random = randint(1, 3)
 
         if random == 1:
@@ -129,7 +129,9 @@ class Car():
     def setDir(self):
 
         random = randint(1, 4)
-
+        """
+        A series of if and elif statements to hold the cars in the screen and randomly assign a direction to them.
+        """
         if random == 1 and self.position[1] > 0:
             self.direction = "N"
 
@@ -148,44 +150,47 @@ class Car():
     """
     def updatePosition(self, turnTime):
 
-        if turnTime > 1:
-
+        if turnTime > 1: # cars start moving after 1 second.
+            """
+            A series of if and elif statements used to update the position of the car based on the car's direction and speed.
+            Also it updates the car's bounds based on their direction and position and type.
+            """
             if self.direction == "N":
 
-                self.position[1] = self.position[1] - self.speed
+                self.position[1] = self.position[1] - self.speed # move the car
 
-                self.bounds = Rect(self.position[0], self.position[1], 36, 50)
+                self.bounds = Rect(self.position[0], self.position[1], 36, 50) #update bounds
 
-                if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 42, 110)
+                if self.type in [1,2]: # if it is a big car
+                    self.bounds = Rect(self.position[0], self.position[1], 42, 110) #update bounds
 
             elif self.direction == "E":
 
-                self.position[0] = self.position[0] - self.speed
+                self.position[0] = self.position[0] - self.speed # move the car
 
-                self.bounds = Rect(self.position[0], self.position[1], 50, 36)
+                self.bounds = Rect(self.position[0], self.position[1], 50, 36) #update bounds
 
-                if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 110, 42)
+                if self.type in [1,2]: # if it is a big car
+                    self.bounds = Rect(self.position[0], self.position[1], 110, 42) #update bounds
 
             elif self.direction == "S":
 
-                self.position[1] = self.position[1] + self.speed
+                self.position[1] = self.position[1] + self.speed # move the car
 
-                self.bounds = Rect(self.position[0], self.position[1], 36, 50)
+                self.bounds = Rect(self.position[0], self.position[1], 36, 50) #update bounds
 
-                if self.type in [1,2]:
-                    self.bounds = Rect(self.position[0], self.position[1], 42, 110)
+                if self.type in [1,2]: # if it is a big car
+                    self.bounds = Rect(self.position[0], self.position[1], 42, 110) #update bounds
 
             elif self.direction == "W":
 
-                self.position[0] = self.position[0] + self.speed
+                self.position[0] = self.position[0] + self.speed # move the car
 
-                self.bounds = Rect(self.position[0], self.position[1], 50, 36)
+                self.bounds = Rect(self.position[0], self.position[1], 50, 36) #update bounds
 
-                if self.type in [1,2]:
+                if self.type in [1,2]: # if it is a big car
 
-                    self.bounds = Rect(self.position[0], self.position[1], 110, 42)
+                    self.bounds = Rect(self.position[0], self.position[1], 110, 42) #update bounds
 
 
 
@@ -198,35 +203,37 @@ class Obstacle():
     def __init__(self, size):
 
         self.size = size
+        """
+        A series of if and elif statements to place the obstacles on the map.
+        """
+        if self.size == 1: # if it is a building
 
-        if self.size == 1:
+            self.position = [100, 250] #obstacle position
 
-            self.position = [100, 250]
+        elif self.size == 2: # if it is a building
+            self.position = [500, 150] #obstacle position
 
-        elif self.size == 2:
-            self.position = [500, 150]
+        elif self.size == 3: # if it is a building
+            self.position = [500, 50] #obstacle position
 
-        elif self.size == 3:
-            self.position = [500, 50]
+        elif self.size == 4: # if it is a star
+            self.position = [randint(0, 900), randint(0, 600)] # randomly place it on a map
 
-        elif self.size == 4:
-            self.position = [randint(0, 900), randint(0, 600)]
+        elif self.size == 5: # if it is a building
+            self.position = [100, 400] #obstacle position
 
-        elif self.size == 5:
-            self.position = [100, 400]
+        elif self.size == 6: # if it is a building
+            self.position = [500, 250] #obstacle position
 
-        elif self.size == 6:
-            self.position = [500, 250]
+        elif self.size == 7: # if it is a building
+            self.position = [100, 50]#obstacle position
 
-        elif self.size == 7:
-            self.position = [100, 50]
-
-        self.bounds = Rect(self.position[0] , self.position[1], 100, 100)
+        self.bounds = Rect(self.position[0] , self.position[1], 100, 100) #set the bounds to detect collisions.
 
         if self.size == 4:
-            self.bounds = Rect(self.position[0] , self.position[1], 50, 50)
+            self.bounds = Rect(self.position[0] , self.position[1], 50, 50) # set the bounds for the stars
 
-        self.status = True
+        self.status = True # status is used to detect stars from cars in the cars list.
 
 class Turn():
     """
@@ -236,11 +243,11 @@ class Turn():
     """
     def __init__(self):
 
-        self.time = 0
+        self.time = 0 # time is initially zero.
 
-        self.score = 0
+        self.score = 0 # score is initially zero.
 
-        self.status = True
+        self.status = True # The main loop will run until turn.status is true
     """
     Pre: the city object must be inputted.
     Post: to update the turn score based on the time and city population.
@@ -248,7 +255,7 @@ class Turn():
     """
     def updateScore(self, city):
 
-        self.score = round(city.population * self.time,1)
+        self.score = round(city.population * self.time,1) # updates the current turn's score based on time and city's population.
     """
     Pre: -
     Post: sets the turn status to false.
@@ -256,6 +263,6 @@ class Turn():
     """
     def endTurn(self):
 
-        self.status = False
+        self.status = False # ends the main loop of the game.
 
 
