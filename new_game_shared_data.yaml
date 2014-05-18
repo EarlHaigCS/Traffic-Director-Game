@@ -1,5 +1,5 @@
 TrafficDirector: {highScore: 0}
 shared_data: {anti_crime: 0, multiplier: 1, population: 100, raw_population: 100,
-  size: 0}
+  size: 1}
 BuildingBlox: {highScore: 0}
 ChooChooTrain: {highScore: 0}
