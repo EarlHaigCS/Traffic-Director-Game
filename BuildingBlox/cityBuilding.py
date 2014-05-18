@@ -1,4 +1,4 @@
 
-import towerBuilding
-
-towerBuilding.TowerBuilding('b')
+from BuildingBlox import *
+a = BuildingBlox()
+a.run()
