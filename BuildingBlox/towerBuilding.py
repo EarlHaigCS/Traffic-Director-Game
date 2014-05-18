@@ -46,6 +46,9 @@ def TowerBuilding(colour):
         frame = pygame.image.load("images/Tower/frame.png").convert_alpha()
         floorind = pygame.image.load("images/Tower/floorindicator.png").convert_alpha()
         resicon = pygame.image.load("images/Tower/residenticon.png").convert_alpha()
+        comboframe = pygame.image.load("images/Tower/barframe.png").convert_alpha()
+        combobar = pygame.image.load("images/Tower/bar.png").convert_alpha()
+        doge = pygame.image.load("images/Tower/doge.png").convert_alpha()
 
         # loads the image for the skyline background to background
         background = pygame.image.load("images/Tower/sky.png").convert()
@@ -110,10 +113,16 @@ def TowerBuilding(colour):
         shiftdown = True  # Boolean variable, determines whether the background should shift up or down
         perfect = False  # Boolean variable, set to True when the block lands perfectly
         framecount = 0  # integer, counts the number of frames for long lasting events
-        bonusblocks = []  # list, stores the bonus points for each block in a bonus streak
+        bonusblocks = 0  # list, stores the bonus points for each block in a bonus streak
         secondsleft = 0
         residents = 0
         resinc = 0
+        comboinc = 0
+        scalecombobar = combobar
+        framecount2 = 0
+        endcombo = False
+
+        imgheight = img.get_height()
 
         # Game loop
         while keep_going:
@@ -137,7 +146,7 @@ def TowerBuilding(colour):
 
             '''Shifting the background gradually'''
 
-            if img.get_height() - backgroundinc > 10:
+            if imgheight - backgroundinc > 10:
                 backgroundinc += 10.0
                 if shiftdown:
                     yposition += 10.0
@@ -147,24 +156,24 @@ def TowerBuilding(colour):
                     yposition -= 10.0
                     for blk in blockslanded:
                         blk.setyPos(blk.getyPos() - 10.0)
-            elif img.get_height() - backgroundinc < 10:
+            elif imgheight - backgroundinc < 10:
 
                 if shiftdown:
-                    yposition += (img.get_height() - backgroundinc)
+                    yposition += (imgheight - backgroundinc)
                     for blk in blockslanded:
-                        blk.setyPos(blk.getyPos() + img.get_height()-backgroundinc)
+                        blk.setyPos(blk.getyPos() + imgheight-backgroundinc)
                 else:
-                    yposition -= (img.get_height() - backgroundinc)
+                    yposition -= (imgheight - backgroundinc)
                     for blk in blockslanded:
-                        blk.setyPos(blk.getyPos() - (img.get_height()-backgroundinc))
-                backgroundinc = img.get_height()
+                        blk.setyPos(blk.getyPos() - (imgheight-backgroundinc))
+                backgroundinc = imgheight
                 shiftdown = True
 
             '''Tilting effect'''
             if tilt:
                 if abs(tiltdeg)<=0.5:
                     tiltdeg = 0
-                    blockslanded[-1].setyPos(blockslanded[-2].getyPos()-img.get_height())
+                    blockslanded[-1].setyPos(blockslanded[-2].getyPos()-imgheight)
                     tilt = False
                 elif tiltdeg>0:
                     tiltdeg -= 0.5
@@ -178,9 +187,23 @@ def TowerBuilding(colour):
             '''Perfect landing effect'''
             if perfect:
                 framecount -= 1
-                secondsleft = framecount/32
-                if framecount == 0:
+                secondsleft = (framecount/32) + 1
+                scalecombobar = pygame.transform.scale(combobar, (int(framecount*(27.0/32.0)), 5))
+                if framecount == 0 or len(blockslanded)==tower.getMaxLevel():
                     perfect = False
+                    bonusblocks = 0
+                    residents += comboinc
+                    endcombo = True
+                    framecount2 = 96
+                    comboincdisplay = resfont.render("+"+str(comboinc), 1, (0, 255, 0))
+                    comboinc = 0
+
+            '''Display comboinc after combo streak ends'''
+            if endcombo:
+                framecount2 -= 1
+                if framecount2 == 0:
+                    endcombo = False
+
 
             '''Main loop for tower game, continues until game is finished'''
             if len(blockslanded) < tower.getMaxLevel() and lives > 0:
@@ -263,11 +286,11 @@ def TowerBuilding(colour):
                         # if the block does not rotate back to normal in time, forcefully changes back to upright 0 degrees
                         rotImg = pygame.transform.rotate(img,0)
                         '''Perfect Landing'''
-                        if abs(blockdiff) < 6:
+                        if abs(blockdiff) < 4:
                             perfect = True
-                            bonusblocks = []
                             framecount = 160  # 5 seconds
                             resinc = (len(blockslanded)/20)+5
+                            blockx -= blockdiff
                         else:
                             imperfect +=1
                             resinc = (len(blockslanded)/20)+2
@@ -284,10 +307,14 @@ def TowerBuilding(colour):
 
                         '''Operations for bonus streak'''
                         if perfect:
-                            bonusblocks.append(len(bonusblocks)*secondsleft)
+                            comboinc += secondsleft*bonusblocks
+                            bonusblocks += 1
+
 
                         newblock = bbclasses.Block(blockx-swaypos, blocky, resinc, img)
                         blockslanded.append(newblock)
+
+                        imgheight = img.get_height()
 
                         haveblock = True  # changes boolean value so that a new block may be generated back on the wire
                         passedlastblock = False
@@ -301,9 +328,9 @@ def TowerBuilding(colour):
                             '''Landing tilt animation'''
                             if abs(blockdiff) >= 6:
                                 tiltdeg = blockdiff * -0.5
-                                tiltimg = pygame.transform.rotate(blockslanded[-1].getImg(),tiltdeg)
+                                tiltimg = pygame.transform.rotate(blockslanded[-1].getImg(), tiltdeg)
                                 blockslanded[-1].setImg(tiltimg)
-                                blockslanded[-1].setyPos(blockslanded[-1].getyPos()-(tiltimg.get_height()-img.get_height()-(abs(blockdiff)*math.sin(abs(tiltdeg)*3.1416/180.0))))
+                                blockslanded[-1].setyPos(blockslanded[-1].getyPos()-(tiltimg.get_height()-imgheight-(abs(blockdiff)*math.sin(abs(tiltdeg)*3.1416/180.0))))
                                 tilt = True
 
                         if len(blockslanded) == 1:  # after first block
@@ -371,6 +398,9 @@ def TowerBuilding(colour):
                                     passedlastblock = True
                                 elif abs(blockdiff) < img.get_width():  # Will knock off previous block
                                     tumble = True
+                                    imgheight = img.get_height()
+                                    perfect = False
+                                    framecount = 0
                                     '''needs to start new parabola'''
                                     fallxisset = False  # changes boolean value so that fallx may be reset
                                     falltime = 0  # sets amount of frames after falling back to 0
@@ -430,7 +460,8 @@ def TowerBuilding(colour):
 
             '''Floors constructed'''
             screen.blit(floorind, (30, 360))
-            screen.blit(floorlabel, (41, 416))
+            floorx = 65-floorlabel.get_width()/2
+            screen.blit(floorlabel, (floorx, 416))
 
             '''Lives left heart display <3 '''
             if lives > 0:
@@ -447,14 +478,22 @@ def TowerBuilding(colour):
                 else:
                     resincdisplay = resfont.render(str(resinc), 1, (255, 0, 0))
                 screen.blit(resincdisplay, (70, 50))
-            screen.blit(resicon, (450, 410))
+            screen.blit(resicon, (480, 30))
             totalres = "0"*(5-len(str(residents)))+str(residents)
             totresdis = myfont2.render(totalres, 1, (255, 255, 255))
-            screen.blit(totresdis, (475, 405))
+            screen.blit(totresdis, (505, 25))
 
             '''Bonus streak bar and glow'''
             if perfect:
-                pass
+                bonuseqn = myfont2.render(str(secondsleft) + " x " + str(bonusblocks), 1, (255, 255, 0))
+                screen.blit(bonuseqn, (290, 410))
+                screen.blit(comboframe, (380, 425))
+                screen.blit(scalecombobar, (385, 432))
+                screen.blit(doge, (580, 420))
+
+            '''End combo display'''
+            if endcombo:
+                screen.blit(comboincdisplay, (70, 80))
 
             '''Ending screen'''
             if blitframe:
