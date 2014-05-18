@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="Updated Building Blox game.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BuildingBlox/fonts/jtwya.ttf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="summative.iws" />
@@ -55,7 +56,7 @@
       <file leaf-file-name="towerBuilding.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BuildingBlox/towerBuilding.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="219" column="16" selection-start="10448" selection-end="10448" vertical-scroll-proportion="0.15885417" vertical-offset="3601" max-vertical-offset="7990">
+            <state line="216" column="2" selection-start="10317" selection-end="10317" vertical-scroll-proportion="0.092447914" vertical-offset="3601" max-vertical-offset="7990">
               <folding />
             </state>
           </provider>
@@ -190,6 +191,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="BuildingBlox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BuildingBlox" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fonts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -543,7 +562,11 @@
       <created>1400387355469</created>
       <updated>1400387355470</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated Building Blox game.">
+      <created>1400387668086</created>
+      <updated>1400387668086</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -872,7 +895,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BuildingBlox/towerBuilding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="219" column="16" selection-start="10448" selection-end="10448" vertical-scroll-proportion="0.15885417" vertical-offset="3601" max-vertical-offset="7990">
+        <state line="216" column="2" selection-start="10317" selection-end="10317" vertical-scroll-proportion="0.092447914" vertical-offset="3601" max-vertical-offset="7990">
           <folding />
         </state>
       </provider>
