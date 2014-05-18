@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+'''
 class TowerGame():
     #Attributes
     __residents = 0
@@ -70,7 +71,7 @@ class CityGrid():
         pass
 
 
-
+'''
 class Tower ():
     #Attributes
     __residents = 0
@@ -180,3 +181,6 @@ class Block ():
 
     def getImg(self):
         return self.__img
+
+    def setImg(self,img):
+        self.__img = img

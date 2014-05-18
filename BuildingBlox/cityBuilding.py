@@ -1,4 +1,4 @@
 
 import towerBuilding
 
-towerBuilding.TowerBuilding('y')
+towerBuilding.TowerBuilding('b')
