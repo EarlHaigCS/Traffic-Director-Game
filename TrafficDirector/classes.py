@@ -32,31 +32,7 @@ class Player():
 
         if score > self.highScore: # the current turn score was bigger than the high score, set it as the high score.
             self.highScore = score
-    """
-    Pre: The obstacles list and the cars list must be inputted
-    Post: Returns 2 if the user is hit by a car, returns 3 if the user is trying to go out of the screen and returns 1
-    if the user can't move because of an obstacle and returns 0 if the user can move freely. Also it returns 4 if the user catches a star.
-    Purpose: To determine where the user can move to.
-    """
-    def canMove(self, obstacles, cars):
 
-        screen = Rect(0 , 0, 900, 600) # the screen rectangle.
-        # for every car in the cars list
-        for car in cars:
-            if self.bounds.colliderect(car.bounds) or car.bounds.colliderect(self.bounds): # if the car hit the player
-                try: # check to see if it is a star or a car
-                    if car.status == True:
-                        return 4 # return 4 if it was a star.
-                except: # if it was a car return 2
-                    return 2
-
-        for obstacle in obstacles: # for all obstacles
-            if self.bounds.colliderect(obstacle.bounds): # if the player is about to enter an obstacle return 1
-                return 1
-
-        if not screen.contains(self.bounds): # if the player is out of the screen return 3
-            return 3
-        return 0 # if everything is fine, return 0
     """
     Pre: -
     Post: updates the bounds rectangle for the player.
@@ -77,6 +53,14 @@ class City():
         self.size = size
 
         self.population = population
+    """
+    Pre: -
+    Post: Increases the population by 1
+    Purpose: To avoid 0 population that results in 0 score.
+    """
+    def increasePopulation(self):
+
+        self.population = self.population + 1
 
 class Car():
     """
@@ -232,7 +216,6 @@ class Obstacle():
         if self.size == 4:
             self.bounds = Rect(self.position[0] , self.position[1], 50, 50) # set the bounds for the stars
 
-        self.status = True # status is used to detect stars from cars in the cars list.
 
 class Turn():
     """
