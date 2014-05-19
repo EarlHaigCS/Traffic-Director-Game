@@ -4,7 +4,6 @@ Yaml library is used to parse yaml files. (pyyaml)
 Pygame is the game engine used to make this game.
 """
 import pygame
-import pyglet
 from random import randint
 from pygame.locals import *
 from TrafficDirector import *
@@ -134,7 +133,7 @@ while running: # the main loop of the game
 
         Although I could have used range and elif statements but because it is less likely for the population to be less than
         6400 so using ranges uses more memory. For example if the the population is 7000, the elif statements would do 14
-        requests but using  if statements, only 7 requests will be made.
+        requests but using  if statements, only 12 requests will be made.
         """
         if data["shared_data"]["population"] > 0 :
              cityTypeText =  "settlement"
