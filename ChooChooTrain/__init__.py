@@ -15,6 +15,7 @@ pygame.init()
 pygame.mixer.init()
 
 size = (840, 640)
+
 screen = pygame.display.set_mode(size)  # initialize screen, the window where all the graphics are pasted on
 
 trackgrid=[]    # trackgrid is a list that contains all 64 instances of the train tracks
