@@ -409,8 +409,8 @@ class ChooChooTrain():
                                     timereset(pygame.time.get_ticks())
                                     main()
                             elif x>=515 and x<=655 and y>500 and y<=555:
-                                    pygame.mixer.music.stop()
                                     keep_going=False
+                                    startMenu()
 
 
                 if keep_going==True:

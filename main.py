@@ -92,7 +92,6 @@ while running: # the main loop of the game
 
                 # Starting  choo choo train game
                 if mousePosition[0] > 260 and  mousePosition[0] < 440:
-
                     chooChooTrain = ChooChooTrain()
                     chooChooTrain.run()
                     screen = pygame.display.set_mode((900,600))  # Surface screen is set
