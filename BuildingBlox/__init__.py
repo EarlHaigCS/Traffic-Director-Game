@@ -39,7 +39,6 @@ class BuildingBlox():
         """
         def updateDatabase():
             global residents
-            print residents
             # opening the shared_data.yaml file.
             with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
 
@@ -137,6 +136,7 @@ class BuildingBlox():
             menu = True
             chooselevel = False
             instructionsscreen = False
+            instrslide = 0
 
             while keep_going:
                 #Handle  events in the frame
@@ -168,12 +168,14 @@ class BuildingBlox():
                                 '''Instructions'''
                             elif 230<mousex<230+instructions.get_width() and 260<mousey<316:
                                 instructionsscreen = True
+                                instrslide += 1
                                 menu = False
 
                                 '''Game Suite'''
                             elif 230<mousex<230+gamemenu.get_width() and 340<mousey<396:
                                 keep_going=False
                                 pygame.mixer.music.stop()
+
                         elif chooselevel:
                             '''10 Floors'''
                             if 70<mousex<130+bluechoice.get_width() and 110<mousey<166:
@@ -197,8 +199,14 @@ class BuildingBlox():
                             hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
                             chooselevel = False
                             menu = True
-                        else:
-                            pass
+                        elif instructionsscreen:
+                            '''Left arrow'''
+                            if 5<mousex<31 and 190<mousey<290:
+                                instrslide -= 1
+
+                                '''Right arrow'''
+                            elif 609<mousex<635 and 190<mousey<290:
+                                instrslide += 1
                     else:
                         pass  # does nothing for all other input events
 
@@ -220,6 +228,18 @@ class BuildingBlox():
                     screen.blit(yellow,(70,320))
                     screen.blit(yellowchoice, (130, 320))
                     screen.blit(backtext,(270,400))
+                elif instructionsscreen:
+                    if 0<instrslide<10:
+                        slide = pygame.image.load(os.path.join(scriptDir,"images/instructions/instr"+str(instrslide)+".png")).convert_alpha()
+                        leftarr = pygame.image.load(os.path.join(scriptDir,"images/instructions/leftarrow.png")).convert_alpha()
+                        rightarr = pygame.image.load(os.path.join(scriptDir,"images/instructions/rightarrow.png")).convert_alpha()
+                        screen.blit(slide, (0, 0))
+                        screen.blit(leftarr, (5, 190))
+                        screen.blit(rightarr, (609, 190))
+                    else:
+                        instrslide = 0
+                        instructionsscreen = False
+                        menu = True
                 screen.blit(musicbutton, (10,10))
                 pygame.display.flip()  # Refresh the display
 
@@ -247,6 +267,7 @@ class BuildingBlox():
 
             oklabel = myfont.render("OK ", 1, (0, 0, 0))
             completelabel = myfont.render("Tower Complete!", 1, (0, 0, 0))
+            perfectlabel = myfont2.render("Perfect!", 1, (0, 0, 153))
             '''Load images'''
             img = pygame.image.load(os.path.join(scriptDir,tower.getBottomimg())).convert_alpha()  # loads the image for a tower block to img
             wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
@@ -340,6 +361,7 @@ class BuildingBlox():
             highscore = False
 
             imgheight = img.get_height()
+            perflanding = 0
 
             # Game loop
             while keep_going:
@@ -544,6 +566,7 @@ class BuildingBlox():
                                 framecount = 160  # 5 seconds
                                 resinc = (len(blockslanded)/20)+5
                                 blockx -= blockdiff
+                                perflanding = 32
                             else:
                                 imperfect +=1
                                 resinc = (len(blockslanded)/20)+2
@@ -767,6 +790,11 @@ class BuildingBlox():
                     screen.blit(comboframe, (380, 425))
                     screen.blit(scalecombobar, (385, 432))
                     screen.blit(doge, (580, 420))
+
+                '''Perfect Landing'''
+                if perflanding != 0:
+                    perflanding -= 1
+                    screen.blit(perfectlabel, (150, 250))
 
                 '''End combo display'''
                 if endcombo:
