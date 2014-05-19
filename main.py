@@ -95,6 +95,8 @@ while running: # the main loop of the game
 
                     chooChooTrain = ChooChooTrain()
                     chooChooTrain.run()
+                    screen = pygame.display.set_mode((900,600))  # Surface screen is set
+                    pygame.display.set_caption("City Manager")  # Title bar caption is set
 
 
         elif ev.type == MOUSEBUTTONDOWN: # if the user clicked on the screen and the welcome menu was active.
