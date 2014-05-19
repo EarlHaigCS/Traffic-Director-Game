@@ -40,10 +40,14 @@ class TrafficDirector():
 
         def runMainLoop():
 
+
             """
             Pre: The data must be defined and must contain the previous the shared_data.yaml contents.
             Post: updates the shared data between the games based on the accomplishments in the past turn.
             Purpose: To save the data to the database.
+            """
+            """
+            This function is encapsulated under the runMainLoop function and is only accessible to the runMainLoop function.
             """
             def updateDatabase():
                 # opening the shared_data.yaml file.
@@ -52,13 +56,16 @@ class TrafficDirector():
                     data["TrafficDirector"]["highScore"] = round(player.highScore, 0)
                     # increasing the multiplier based on the player's high score.
                     data["shared_data"]["multiplier"] = data["shared_data"]["multiplier"] + log10(abs(turn.score)) / 1000
-                    # modifying the population of the city
-                    data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
                     #increasing the raw population of the city
                     data["shared_data"]["raw_population"] = data["shared_data"]["raw_population"] + turnStars
+
                     if turnStars == data["shared_data"]["size"]:
 
                         data["shared_data"]["raw_population"] = data["shared_data"]["raw_population"] * 2
+
+                    # modifying the population of the city
+                    data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
+
 
                     """
                     A set of if statements to determine the city size.
@@ -109,6 +116,35 @@ class TrafficDirector():
                     # writing all the modified data to the database.
                     shared_data.write(yaml.dump(data=data))
 
+            """
+            Pre: The obstacles list and the cars list must be inputted
+            Post: Returns 2 if the user is hit by a car, returns 3 if the user is trying to go out of the screen and returns 1
+            if the user can't move because of an obstacle and returns 0 if the user can move freely. Also it returns 4 if the user catches a star.
+            Purpose: To determine where the user can move to.
+            """
+            """
+            This function was originally a method for the player but as it is only dedicated to the runMainLoop function it is
+            encapsulated under the runMainLoop function.
+            """
+            def canMove(player, obstacles, cars):
+
+                screen = Rect(0 , 0, 900, 600) # the screen rectangle.
+                # for every car in the cars list
+                for car in cars:
+                    if player.bounds.colliderect(car.bounds) or car.bounds.colliderect(player.bounds): # if the car hit the player
+                        try: # check to see if it is a star or a car
+                            if car.size == 4: # to detect if it is an obstacle 4
+                                return 4 # return 4 if it was a star.
+                        except: # if it was a car return 2
+                            return 2
+
+                for obstacle in obstacles: # for all obstacles
+                    if player.bounds.colliderect(obstacle.bounds): # if the player is about to enter an obstacle return 1
+                        return 1
+
+                if not screen.contains(player.bounds): # if the player is out of the screen return 3
+                    return 3
+                return 0 # if everything is fine, return 0
             """
             Initializing the game
             """
@@ -227,8 +263,8 @@ class TrafficDirector():
                         else:
                              pauseMenu.activate()
 
-                    elif event.type == KEYDOWN and event.key == K_h and mainMenu.isActive():
-                        webbrowser.open("https://drive.google.com/file/d/0ByDvzb7bEi3qdlJqbnpWbGtDU0U/edit?usp=sharing")
+                    elif event.type == KEYDOWN and event.key == K_h and mainMenu.isActive(): # if on the main manu and the user pressed the h button
+                        webbrowser.open("https://www.pagehub.org/kpourdeilami/traffic-director/home") # open the help content.
                     # Moving UP
                     elif event.type == KEYDOWN and event.key == K_UP:
                         player.direction = "N"
@@ -292,7 +328,7 @@ class TrafficDirector():
                     # printing the text on the screen
                     screen.blit(scoretext, (110, 15))
                     # initializing the star text
-                    starText=font.render( "Win Points: "+ str(turnStars) + "  out of " + str(city.size), 1,(255,255,255))
+                    starText=font.render( "Stars: "+ str(turnStars) + "  out of " + str(city.size), 1,(255,255,255))
                     # printing the text on the screen
                     screen.blit(starText, (300, 15))
 
@@ -408,7 +444,7 @@ class TrafficDirector():
                     The code for the moving player
                     """
                     # The following lines are there two make the running animation possible.
-                    if player.canMove(obstacles, cars) == 0 or turn.time < 4: # if the player can freely move.
+                    if canMove(player ,obstacles, cars) == 0 or turn.time < 4: # if the player can freely move.
 
                         if int(turn.time*5) % 3 == 0: # mod 3 because there are three different running images.
                             playerImage = pygame.image.load(os.path.join(scriptDir, "img/player-running-1.png"))
@@ -438,13 +474,13 @@ class TrafficDirector():
                             player.position[1] = player.position[1] + 12
                             playerImage = pygame.transform.rotate(playerImage, 180)
 
-                    elif player.canMove(obstacles, cars) == 1: # if the player can't move due to an obstacle.
+                    elif canMove(player ,obstacles, cars) == 1: # if the player can't move due to an obstacle.
                         """
                         take control over the player and don't let the user to hide in the buildings.
                         """
                         player.position = [player.position[0] + 5, player.position[1] + 5]
                     # if the player is about th exit the screen.
-                    elif player.canMove(obstacles, cars) == 3:
+                    elif canMove(player ,obstacles, cars) == 3:
                         """
                         A set of if and elif statements to hold the player from exiting the screen.
                         """
@@ -464,14 +500,14 @@ class TrafficDirector():
                             player.position = [player.position[0], player.position[1] - 5]
                             player.direction = "N"
 
-                    elif player.canMove(obstacles, cars) == 4: # if the player catches a star
+                    elif canMove(player ,obstacles, cars) == 4: # if the player catches a star
 
                         for car in cars: # remove the star from the screen
                             if car.bounds.colliderect(player.bounds):
                                 cars.remove(car)
                         turnStars = turnStars + 1 # increase the number of stars by 1.
 
-                    elif player.canMove(obstacles, cars) == 2: # if the player has hit an obstacle 4 is hit by a car
+                    elif canMove(player ,obstacles, cars) == 2: # if the player has hit an obstacle 4 is hit by a car
                         if turn.time > 4:
                             pygame.mixer.music.load(os.path.join(scriptDir, "sound_tracks/car_crash.wav")) # play the game over sound once.
 
@@ -506,7 +542,9 @@ class TrafficDirector():
 
                     # Starting the game over
                     if event.type == KEYDOWN and event.key == K_a: # if the player hit the a button restart the game.
+
                         updateDatabase() # update the database with the new information.
+
                         runMainLoop() # run the game again.
                         return # end the current function.
 
