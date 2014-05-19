@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Ben\PycharmProjects\summative\BuildingBlox\cityBuilding.py" afterPath="" />
+    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="Added music to the game suite menu.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/mute.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sound/sims.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/img/speaker.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -21,7 +24,7 @@
     <SUITE FILE_PATH="coverage/summative$towerBuilding.coverage" NAME="towerBuilding Coverage Results" MODIFIED="1400432796082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
     <SUITE FILE_PATH="coverage/summative$cityBuilding.coverage" NAME="cityBuilding Coverage Results" MODIFIED="1400480080940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
     <SUITE FILE_PATH="coverage/summative$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1400456390037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
-    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400485415817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400509640219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -38,7 +41,7 @@
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="0" selection-start="5148" selection-end="5148" vertical-scroll-proportion="0.0" vertical-offset="1689" max-vertical-offset="14076">
+            <state line="122" column="0" selection-start="5148" selection-end="5148" vertical-scroll-proportion="0.0" vertical-offset="1570" max-vertical-offset="13957">
               <folding />
             </state>
           </provider>
@@ -53,22 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="309" column="82" selection-start="14109" selection-end="14109" vertical-scroll-proportion="0.852292" vertical-offset="4615" max-vertical-offset="9520">
+            <state line="513" column="46" selection-start="26229" selection-end="26234" vertical-scroll-proportion="-7.5384617" vertical-offset="8389" max-vertical-offset="9520">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="79" selection-start="4105" selection-end="4105" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="4046">
-              <folding>
-                <element signature="e#135#148#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -77,6 +69,17 @@
         <entry file="file://$PROJECT_DIR$/img/confirmation.png">
           <provider selected="true" editor-type-id="images">
             <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="104" column="51" selection-start="3700" selection-end="3700" vertical-scroll-proportion="-2.3495934" vertical-offset="3213" max-vertical-offset="4590">
+              <folding>
+                <element signature="e#135#148#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -160,6 +163,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sound" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -720,7 +751,11 @@
       <created>1400485345400</created>
       <updated>1400485345400</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Deleted useless citybuilding file.">
+      <created>1400485630962</created>
+      <updated>1400485630962</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -798,13 +833,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Update for TBI for BB." />
     <MESSAGE value="Updated Building Blox game." />
     <MESSAGE value="Edited so that music stops after returning to game suite menu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited so that music stops after returning to game suite menu." />
+    <MESSAGE value="Deleted useless citybuilding file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted useless citybuilding file." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1052,26 +1089,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="0" selection-start="5148" selection-end="5148" vertical-scroll-proportion="0.0" vertical-offset="1689" max-vertical-offset="14076">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BuildingBlox/classes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="120" column="21" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3247">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="79" selection-start="4105" selection-end="4105" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="4046">
-          <folding>
-            <element signature="e#135#148#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1082,8 +1103,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="309" column="82" selection-start="14109" selection-end="14109" vertical-scroll-proportion="0.852292" vertical-offset="4615" max-vertical-offset="9520">
+        <state line="513" column="46" selection-start="26229" selection-end="26234" vertical-scroll-proportion="-7.5384617" vertical-offset="8389" max-vertical-offset="9520">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="0" selection-start="5148" selection-end="5148" vertical-scroll-proportion="0.0" vertical-offset="1689" max-vertical-offset="14076">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="51" selection-start="3700" selection-end="3700" vertical-scroll-proportion="-2.3495934" vertical-offset="3213" max-vertical-offset="4590">
+          <folding>
+            <element signature="e#135#148#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
