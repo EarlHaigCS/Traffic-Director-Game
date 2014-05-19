@@ -263,8 +263,8 @@ class TrafficDirector():
                         else:
                              pauseMenu.activate()
 
-                    elif event.type == KEYDOWN and event.key == K_h and mainMenu.isActive():
-                        webbrowser.open("https://drive.google.com/file/d/0ByDvzb7bEi3qdlJqbnpWbGtDU0U/edit?usp=sharing")
+                    elif event.type == KEYDOWN and event.key == K_h and mainMenu.isActive(): # if on the main manu and the user pressed the h button
+                        webbrowser.open("https://www.pagehub.org/kpourdeilami/traffic-director/home") # open the help content.
                     # Moving UP
                     elif event.type == KEYDOWN and event.key == K_UP:
                         player.direction = "N"
