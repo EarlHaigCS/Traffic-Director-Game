@@ -64,6 +64,8 @@ lastgrid=28
 
 counter2=0
 
+
+
 class ChooChooTrain():
 
     def run(self):
@@ -85,8 +87,7 @@ class ChooChooTrain():
             global  diff
             diff=currenttime
 
-        def connectcheck(start,track):  #this function checks whether two grids connect
-
+        def connectcheck(track,start):  #this function checks whether two grids connect
             bCon=False
 
             if track.getNumber()-8 == start or track.getNumber()+8 == start: # the two grids are on top or below each other
@@ -188,6 +189,7 @@ class ChooChooTrain():
                         btf=findUnconnectedEnd(trackgrid[startpoint[-1]])   #then check if it can auto-connect more grids
                         if btf ==False:
                             break
+
             except:
                 pass
 
@@ -652,10 +654,9 @@ class ChooChooTrain():
 
 
             for i in range(64):
-
                     tempsc= set1[i]
-                    temporient=randint(0,3)
                     trackgrid.append(Track(i,tempsc, 0, 0))
+                    temporient=randint(0,3)
                     tempimg=trackgrid[i].getImage()
                     imgs.append(pygame.image.load(os.path.join(scriptDir,tempimg)))
                     imgs[i] = imgs[i].convert()
@@ -712,7 +713,9 @@ class ChooChooTrain():
                                     trackgrid[tracknum].rotate()
                                     click.append(tracknum)
                                     try:
+
                                         changecolor(trackgrid[tracknum],startpoint[-1])
+
                                     except IndexError:
                                         changecolor(trackgrid[tracknum],28)
                                 else:
@@ -830,6 +833,7 @@ class ChooChooTrain():
                     screen.blit(train.getimg(),(trainx-30,trainy-30))
                     screen.blit(train.getimg(),(trainx-30,trainy-30))
                     pygame.display.flip()
+
         startMenu()
 
 class Sound(ChooChooTrain):  #this class is used to control the backgroud music
@@ -863,6 +867,22 @@ class Sound(ChooChooTrain):  #this class is used to control the backgroud music
         img = pygame.image.load(os.path.join(scriptDir,self.img)).convert_alpha()
         img = pygame.transform.scale(img,(40,40))
         screen.blit(img,(self.x,self.y))
+
+
+
+class Train(ChooChooTrain):
+    img=trainimg[0]
+    def setimg(self,num):
+        if num ==1:
+            self.img=trainimg[0]
+        elif num==2:
+            self.img=trainimg[1]
+        elif num==3:
+            self.img=trainimg[2]
+    def getimg(self):
+        return self.img
+sound=Sound()
+train=Train()
 
 class Track(ChooChooTrain):  #this class is used to control the track grids
     global screen
@@ -1014,16 +1034,4 @@ class Track(ChooChooTrain):  #this class is used to control the track grids
     def setShowSpecial(self,btf):
         self.showspecial=btf
 
-class Train(ChooChooTrain):
-    img=trainimg[0]
-    def setimg(self,num):
-        if num ==1:
-            self.img=trainimg[0]
-        elif num==2:
-            self.img=trainimg[1]
-        elif num==3:
-            self.img=trainimg[2]
-    def getimg(self):
-        return self.img
-sound=Sound()
-train=Train()
+
