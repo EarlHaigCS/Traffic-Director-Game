@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="Updated code">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/TrafficDirector/img/gmbg.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/bg.mpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/img/bg.webm" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/building2.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/building2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/circle_close_delete-48_2.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/circle_close_delete-48_2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/gameOverMenu.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/gameOverMenu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/menu.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/menu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/menu.png" afterPath="$PROJECT_DIR$/img/menu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/park.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/park.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/pauseMenu.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/pauseMenu.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/star.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/star.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/status.png" afterPath="$PROJECT_DIR$/img/status.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/status.psd" afterPath="$PROJECT_DIR$/img/status.psd" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/img/won.png" afterPath="$PROJECT_DIR$/TrafficDirector/img/won.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/__init__.py" afterPath="$PROJECT_DIR$/TrafficDirector/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
+    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="summative.iws" />
@@ -543,7 +527,11 @@
       <created>1400458249579</created>
       <updated>1400458249579</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated code">
+      <created>1400461192074</created>
+      <updated>1400461192074</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
