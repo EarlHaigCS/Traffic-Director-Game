@@ -66,12 +66,10 @@ while running: # the main loop of the game
             mousePosition = pygame.mouse.get_pos() # getting the position of the click.
 
             # The back button
-            if mousePosition[0] > 850 and  mousePosition[0] < 900:
+            if 850 < mousePosition[0] < 900 and 0 < mousePosition[1] < 100:
 
-                if mousePosition[1] > 0 and mousePosition[1] < 100:
-
-                    gameMenu = False
-                    welcomeMenu= True
+                gameMenu = False
+                welcomeMenu= True
 
             if mousePosition[1] > 400 and mousePosition[1] < 580:
 
@@ -103,22 +101,20 @@ while running: # the main loop of the game
 
             mousePosition = pygame.mouse.get_pos() # getting the mouse position
 
-            if mousePosition[0] > 329 and  mousePosition[0] < 571:
+            if 320<mousePosition[0] < 580 and  220< mousePosition[1] < 260:
                 # activating the game menu and loading the game from memory.
-                if mousePosition[1] < 100 and mousePosition[1] > 60:
+                gameMenu = True
+                welcomeMenu= False
 
-                    gameMenu = True
-                    welcomeMenu= False
                 # starting a new game and activating the game menu.
-                elif mousePosition[1] < 200 and mousePosition[1] > 160:
+            elif 320<mousePosition[0] < 580 and  320< mousePosition[1] < 360:
+                newGame()
+                gameMenu = True
+                welcomeMenu= False
 
-                    newGame()
-                    gameMenu = True
-                    welcomeMenu= False
                 # if the user pressed the quit
-                elif mousePosition[1] < 300 and mousePosition[1] > 260:
-
-                    running = False # stop the game.
+            elif 390<mousePosition[0] < 510 and  420< mousePosition[1] < 460:
+                running = False # stop the game.
 
     # drawing the welcome menu on the screen.
     if welcomeMenu:
