@@ -47,6 +47,8 @@ welcomeMenu = True # welcome menu shows up automatically after launch.
 
 gameMenu = False
 
+areyousure = False  # asks user to confirm before starting new game
+
 while running: # the main loop of the game
 
     clock.tick(30) # setting the FPS to 30.
@@ -100,25 +102,37 @@ while running: # the main loop of the game
 
             mousePosition = pygame.mouse.get_pos() # getting the mouse position
 
-            if 320<mousePosition[0] < 580 and  220< mousePosition[1] < 260:
-                # activating the game menu and loading the game from memory.
-                gameMenu = True
-                welcomeMenu= False
+            if areyousure:
+                # Yes - Deletes data and starts new game
+                if 305 < mousePosition[0] < 330 and 370 < mousePosition[1] < 380:
+                    newGame()
+                    gameMenu = True
+                    welcomeMenu= False
+                    areyousure = False
+                # No
+                if 520 < mousePosition[0] < 590 and 350 < mousePosition[1] < 390:
+                    areyousure = False
+            else:
+                if 320<mousePosition[0] < 580 and  220< mousePosition[1] < 260:
+                    # activating the game menu and loading the game from memory.
+                    gameMenu = True
+                    welcomeMenu= False
 
-                # starting a new game and activating the game menu.
-            elif 320<mousePosition[0] < 580 and  320< mousePosition[1] < 360:
-                newGame()
-                gameMenu = True
-                welcomeMenu= False
+                    # starting a new game and activating the game menu.
+                elif 320<mousePosition[0] < 580 and  320< mousePosition[1] < 360:
+                    areyousure = True
+                    confirmation = pygame.image.load(os.path.join(scriptDir, "img/confirmation.png")).convert_alpha()
 
-                # if the user pressed the quit
-            elif 390<mousePosition[0] < 510 and  420< mousePosition[1] < 460:
-                running = False # stop the game.
+                    # if the user pressed the quit
+                elif 390<mousePosition[0] < 510 and  420< mousePosition[1] < 460:
+                    running = False # stop the game.
 
     # drawing the welcome menu on the screen.
     if welcomeMenu:
         image = pygame.image.load(os.path.join(scriptDir, "img/menu.png")).convert_alpha()
         screen.blit(image, (0,0))
+        if areyousure:
+            screen.blit(confirmation, (250, 160))
     # drawing the game menu on the screen.
     elif gameMenu:
 
