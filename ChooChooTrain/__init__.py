@@ -66,7 +66,7 @@ lastgrid=28
 counter2=0
 
 
-
+score=0
 class ChooChooTrain():
 
     def run(self):
@@ -83,7 +83,79 @@ class ChooChooTrain():
 
         size = (840, 640)
         screen= pygame.display.set_mode(size)
+        def updateDatabase():
+            global residents
+            # opening the shared_data.yaml file.
+            with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
+                mark=len(startpoint)
+                if mark > data["ChooChooTrain"]["highScore"]:
+                    # updating the high score with the new high score.
+                    data["ChooChooTrain"]["highScore"] = score
+                #increasing the raw population of the city
+                if mark<50:
+                    data["shared_data"]["multiplier"]=1.1
+                elif mark<100:
+                    data["shared_data"]["multiplier"]=1.2
+                elif mark<150:
+                    data["shared_data"]["multiplier"]=1.3
+                elif mark<200:
+                    data["shared_data"]["multiplier"]=1.4
+                else:
+                    data["shared_data"]["multiplier"]=1.5
 
+                # modifying the population of the city
+                data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
+
+                """
+                A set of if statements to determine the city size.
+
+                 Although I could have used range and elif statements but because it is less likely for the population to be less than
+                6400 so using ranges uses more memory. For example if the the population is 7000, the elif statements would do 14
+                requests but using  if statements, only 7 requests will be made.
+
+                The citySize variable is used to generate the map.
+                """
+                totolpop = data["shared_data"]["population"]
+                if totolpop > 180000 :
+                    citySize = 12
+
+                elif totolpop > 102400:
+                    citySize = 11
+
+                elif totolpop > 51200:
+                    citySize = 10
+
+                elif totolpop > 25600:
+                    citySize = 9
+
+                elif totolpop > 12800:
+                    citySize = 8
+
+                elif totolpop > 6400:
+                    citySize = 7
+
+                elif totolpop > 3200:
+                    citySize = 6
+
+                elif totolpop > 1600:
+                    citySize = 5
+
+                elif totolpop > 800:
+                    citySize = 4
+
+                elif totolpop > 400:
+                    citySize = 3
+
+                elif totolpop > 200:
+                    citySize = 2
+
+                elif totolpop > 0:
+                    citySize = 1
+                # updating the city size in the database.
+                data["shared_data"]["size"] = citySize
+
+                # writing all the modified data to the database.
+                shared_data.write(yaml.dump(data=data))
         def timereset(currenttime): #this function resets the timer everytime the game is replayed
             global  diff
             diff=currenttime
@@ -281,7 +353,7 @@ class ChooChooTrain():
 
                         train.setimg(2)
                     elif startpoint[index+1]-num ==1 and currentgrid.getSc()==1 and currentgrid.getOrient()==0: #next grid on the right side
-                        print "0 r"
+
                         a = currentgrid.getx()+80
                         b=currentgrid.gety()+80
                         rx=currentgrid.getx()+40+40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -293,7 +365,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==1 and currentgrid.getSc()==1 and currentgrid.getOrient()==3: #next grid on the right side
-                        print "3 r"
+
                         a = currentgrid.getx()+80
                         b=currentgrid.gety()
 
@@ -305,7 +377,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==-1 and currentgrid.getSc()==1 and currentgrid.getOrient()==1:#next grid on the left side
-                        print "1 l"
+
                         a = currentgrid.getx()
                         b=currentgrid.gety()+80
                         rx=currentgrid.getx()+40-40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -318,7 +390,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==-1 and currentgrid.getSc()==1 and currentgrid.getOrient()==2: #next grid on the left side
-                        print "2 l"
+
                         a = currentgrid.getx()
                         b=currentgrid.gety()
                         rx=currentgrid.getx()+40-40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -331,7 +403,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==8 and currentgrid.getSc()==1 and currentgrid.getOrient()==0: #next grid below
-                        print "0 d"
+
                         a = currentgrid.getx()+80
                         b=currentgrid.gety()+80
                         rx=currentgrid.getx()+80-40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -344,7 +416,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==8 and currentgrid.getSc()==1 and currentgrid.getOrient()==1: #next grid below
-                        print "1 d"
+
                         a = currentgrid.getx()
                         b=currentgrid.gety()+80
                         rx=currentgrid.getx()+40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -357,7 +429,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==-8 and currentgrid.getSc()==1 and currentgrid.getOrient()==2:#next grid top
-                        print "2 u"
+
                         a = currentgrid.getx()
                         b=currentgrid.gety()
                         rx=currentgrid.getx()+40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -370,7 +442,7 @@ class ChooChooTrain():
                         train.setimg(2)
 
                     elif startpoint[index+1]-num ==-8 and currentgrid.getSc()==1 and currentgrid.getOrient()==3: #next grid top
-                        print "3 u"
+
                         a = currentgrid.getx()+80
                         b=currentgrid.gety()
                         rx=currentgrid.getx()+80-40*math.sin((90/(90*timepergrid)*counter2)*math.pi/180)
@@ -387,6 +459,7 @@ class ChooChooTrain():
             return (rx,ry,)
 
         def endScreen(time):
+            global score
             clock = pygame.time.Clock()
             keep_going = True
 
@@ -829,7 +902,9 @@ class ChooChooTrain():
                 except IndexError:
                     keep_going=False
                     game_over=True
+
                     endScreen(time)
+                    updateDatabase()
                 if game_over==False:
                     screen.blit(train.getimg(),(trainx-30,trainy-30))
                     screen.blit(train.getimg(),(trainx-30,trainy-30))
