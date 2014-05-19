@@ -14,6 +14,7 @@ import time
 import yaml
 import webbrowser
 scriptDir = os.path.dirname(__file__)
+
 class TrafficDirector():
 
     """
