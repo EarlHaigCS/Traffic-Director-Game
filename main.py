@@ -87,6 +87,8 @@ while running: # the main loop of the game
 
                     buildingBlox = BuildingBlox()
                     buildingBlox.run()
+                    screen = pygame.display.set_mode((900,600))  # Surface screen is set
+                    pygame.display.set_caption("City Manager")  # Title bar caption is set
 
                 # Starting  choo choo train game
                 if mousePosition[0] > 260 and  mousePosition[0] < 440:

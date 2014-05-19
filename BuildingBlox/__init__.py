@@ -12,6 +12,11 @@ scriptDir = os.path.dirname(__file__)
 class BuildingBlox():
     def run(self):
 
+        # Opening the database as read-only
+        with open(os.path.join(scriptDir, "../shared_data.yaml"), 'r') as shared_data:
+            # Storing all the data inside the database to the data variable.
+            data = yaml.load(shared_data)
+
         pygame.init()  # initializes the pygame module
         pygame.font.init()
         clock = pygame.time.Clock() # Clock initialized to control frame rate
@@ -20,22 +25,96 @@ class BuildingBlox():
         screen = pygame.display.set_mode(size)  # Surface screen is set
         pygame.display.set_caption("Building Blox")  # Title bar caption is set
 
-
         '''Music'''
-        music = pygame.mixer.music.load("sound/music.wav")
+        music = pygame.mixer.music.load(os.path.join(scriptDir, "sound/music.wav"))
         pygame.mixer.music.play(-1)
         musicplaying = True
 
+        residents = 0
+
+        """
+        Pre: The data must be defined and must contain the previous the shared_data.yaml contents.
+        Post: updates the shared data between the games based on the accomplishments in the past turn.
+        Purpose: To save the data to the database.
+        """
+        def updateDatabase():
+            global residents
+            print residents
+            # opening the shared_data.yaml file.
+            with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
+
+                if residents > data["BuildingBlox"]["highScore"]:
+                    # updating the high score with the new high score.
+                    data["BuildingBlox"]["highScore"] = residents
+                #increasing the raw population of the city
+                data["shared_data"]["raw_population"] = data["shared_data"]["raw_population"] + residents
+                # modifying the population of the city
+                data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
+
+                """
+                A set of if statements to determine the city size.
+
+                 Although I could have used range and elif statements but because it is less likely for the population to be less than
+                6400 so using ranges uses more memory. For example if the the population is 7000, the elif statements would do 14
+                requests but using  if statements, only 7 requests will be made.
+
+                The citySize variable is used to generate the map.
+                """
+                totolpop = data["shared_data"]["population"]
+                if totolpop > 180000 :
+                    citySize = 12
+
+                elif totolpop > 102400:
+                    citySize = 11
+
+                elif totolpop > 51200:
+                    citySize = 10
+
+                elif totolpop > 25600:
+                    citySize = 9
+
+                elif totolpop > 12800:
+                    citySize = 8
+
+                elif totolpop > 6400:
+                    citySize = 7
+
+                elif totolpop > 3200:
+                    citySize = 6
+
+                elif totolpop > 1600:
+                    citySize = 5
+
+                elif totolpop > 800:
+                    citySize = 4
+
+                elif totolpop > 400:
+                    citySize = 3
+
+                elif totolpop > 200:
+                    citySize = 2
+
+                elif totolpop > 0:
+                    citySize = 1
+                # updating the city size in the database.
+                data["shared_data"]["size"] = citySize
+
+                # writing all the modified data to the database.
+                shared_data.write(yaml.dump(data=data))
+
         def mainMenu():
             '''Fonts and Text'''
-            myfont = pygame.font.Font("fonts/hollow.ttf", 96)
+            myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 96)
             myfont.set_bold(False)
-            myfont2 = pygame.font.Font("fonts/hollow.ttf", 56)
+            myfont2 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 56)
             myfont2.set_bold(False)
+            myfont3 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 28)
+            myfont3.set_bold(False)
             title = myfont.render("Building Blox", 1, (0, 0, 0))
             playgame = myfont2.render("Play Game!", 1, (0, 0, 0))
             instructions = myfont2.render("Instructions", 1, (0, 0, 0))
             gamemenu = myfont2.render("Game Suite", 1, (0, 0, 0))
+            hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
             difficulty = myfont2.render("Choose Difficulty:", 1, (0, 0, 0))
             bluechoice = myfont2.render("Apartment (10 Floors)", 1, (0, 0, 0))
             redchoice = myfont2.render("Condo (20 Floors)", 1, (0, 0, 0))
@@ -43,18 +122,22 @@ class BuildingBlox():
             yellowchoice = myfont2.render("Skyscraper (40 Floors)", 1, (0, 0, 0))
             backtext = myfont2.render("Back", 1, (0, 0, 0))
 
-            background = pygame.image.load("images/Menu/mainmenubk.png").convert_alpha()
-            musicbutton = pygame.image.load("images/Tower/musicbutton.png").convert_alpha()
-            blue = pygame.image.load("images/Menu/blueComp.png").convert_alpha()
-            red = pygame.image.load("images/Menu/redComp.png").convert_alpha()
-            green = pygame.image.load("images/Menu/greenComp.png").convert_alpha()
-            yellow = pygame.image.load("images/Menu/yellowComp.png").convert_alpha()
+            background = pygame.image.load(os.path.join(scriptDir,"images/Menu/mainmenubk.png")).convert_alpha()
+            musicbutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/musicbutton.png")).convert_alpha()
+            blue = pygame.image.load(os.path.join(scriptDir,"images/Menu/blueComp.png")).convert_alpha()
+            red = pygame.image.load(os.path.join(scriptDir,"images/Menu/redComp.png")).convert_alpha()
+            green = pygame.image.load(os.path.join(scriptDir,"images/Menu/greenComp.png")).convert_alpha()
+            yellow = pygame.image.load(os.path.join(scriptDir,"images/Menu/yellowComp.png")).convert_alpha()
+
+            global residents
             global musicplaying
+            musicplaying = True
 
             keep_going = True
             menu = True
             chooselevel = False
             instructionsscreen = False
+
             while keep_going:
                 #Handle  events in the frame
                 for ev in pygame.event.get():
@@ -65,13 +148,16 @@ class BuildingBlox():
                         mousex = mousepos[0]
                         mousey = mousepos[1]
                         '''Music button'''
+
                         if 10<mousex<81 and 10<mousey<35:
+
                             if musicplaying:
                                 pygame.mixer.music.pause()
                                 musicplaying = False
                             else:
                                 pygame.mixer.music.unpause()
                                 musicplaying = True
+
                             '''Main Menu Button'''
                         elif menu:
                             '''Play Game'''
@@ -85,37 +171,32 @@ class BuildingBlox():
                                 menu = False
 
                                 '''Game Suite'''
-                            elif 230<mousex<81 and 340<mousey<396:
-                                pass
+                            elif 230<mousex<230+gamemenu.get_width() and 340<mousey<396:
+                                keep_going=False
+                                pygame.mixer.music.stop()
                         elif chooselevel:
                             '''10 Floors'''
                             if 70<mousex<130+bluechoice.get_width() and 110<mousey<166:
                                 buildTower('b')
-                                chooselevel = False
-                                menu = True
 
                                 '''20'''
                             elif 70<mousex<130+redchoice.get_width() and 180<mousey<236:
                                 buildTower('r')
-                                chooselevel = False
-                                menu = True
 
                                 '''30'''
                             elif 70<mousex<130+greenchoice.get_width() and 250<mousey<306:
                                 buildTower('g')
-                                chooselevel = False
-                                menu = True
 
                                 '''40'''
                             elif 70<mousex<130+greenchoice.get_width() and 320<mousey<376:
                                 buildTower('y')
-                                chooselevel = False
-                                menu = True
 
                                 '''Back'''
                             elif 270<mousex<270+backtext.get_width() and 400<mousey<456:
-                                chooselevel = False
-                                menu = True
+                                pass
+                            hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
+                            chooselevel = False
+                            menu = True
                         else:
                             pass
                     else:
@@ -127,6 +208,7 @@ class BuildingBlox():
                     screen.blit(playgame, (230,180))
                     screen.blit(instructions, (230,260))
                     screen.blit(gamemenu, (230,340))
+                    screen.blit(hslabel, (20, 440))
                 elif chooselevel:
                     screen.blit(difficulty,(180,30))
                     screen.blit(blue,(70,110))
@@ -157,35 +239,36 @@ class BuildingBlox():
                 tower = classes.YellowTower(0)
 
             '''Fonts and Text'''
-            myfont = pygame.font.Font("fonts/jtwya.ttf", 19)
+            myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/jtwya.ttf"), 19)
             myfont.set_bold(True)
-            myfont2 = pygame.font.Font("fonts/jtwya.ttf", 28)
+            myfont2 = pygame.font.Font(os.path.join(scriptDir,"fonts/jtwya.ttf"), 28)
             myfont2.set_bold(True)
             resfont = pygame.font.SysFont("monospace", 32, True)
 
-            againlabel = myfont.render("Close window to", 1, (0, 0, 0))
-            exitlabel = myfont.render("play again!", 1, (0, 0, 0))
-
+            oklabel = myfont.render("OK ", 1, (0, 0, 0))
+            completelabel = myfont.render("Tower Complete!", 1, (0, 0, 0))
             '''Load images'''
-            img = pygame.image.load(tower.getBottomimg()).convert_alpha()  # loads the image for a tower block to img
-            wire = pygame.image.load("images/Tower/wire.png").convert_alpha()  # loads the image for the swinging wire to wire
-            cable = pygame.image.load("images/Tower/cable.png").convert_alpha()  # loads the image for cable fir top and bottom blocks
+            img = pygame.image.load(os.path.join(scriptDir,tower.getBottomimg())).convert_alpha()  # loads the image for a tower block to img
+            wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
+            cable = pygame.image.load(os.path.join(scriptDir,"images/Tower/cable.png")).convert_alpha()  # loads the image for cable fir top and bottom blocks
 
-            heart = pygame.image.load("images/Tower/heart.png").convert_alpha()
-            frame = pygame.image.load("images/Tower/frame.png").convert_alpha()
-            floorind = pygame.image.load("images/Tower/floorindicator.png").convert_alpha()
-            resicon = pygame.image.load("images/Tower/residenticon.png").convert_alpha()
-            comboframe = pygame.image.load("images/Tower/barframe.png").convert_alpha()
-            combobar = pygame.image.load("images/Tower/bar.png").convert_alpha()
-            doge = pygame.image.load("images/Tower/doge.png").convert_alpha()
+            heart = pygame.image.load(os.path.join(scriptDir,"images/Tower/heart.png")).convert_alpha()
+            frame = pygame.image.load(os.path.join(scriptDir,"images/Tower/frame.png")).convert_alpha()
+            floorind = pygame.image.load(os.path.join(scriptDir,"images/Tower/floorindicator.png")).convert_alpha()
+            resicon = pygame.image.load(os.path.join(scriptDir,"images/Tower/residenticon.png")).convert_alpha()
+            comboframe = pygame.image.load(os.path.join(scriptDir,"images/Tower/barframe.png")).convert_alpha()
+            combobar = pygame.image.load(os.path.join(scriptDir,"images/Tower/bar.png")).convert_alpha()
+            doge = pygame.image.load(os.path.join(scriptDir,"images/Tower/doge.png")).convert_alpha()
 
-            musicbutton = pygame.image.load("images/Tower/musicbutton.png").convert_alpha()
-            mainmenubutton = pygame.image.load("images/Tower/mainmenubutton.png").convert_alpha()
+            musicbutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/musicbutton.png")).convert_alpha()
+            mainmenubutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/mainmenubutton.png")).convert_alpha()
 
             # loads the image for the skyline background to background
-            background = pygame.image.load("images/Tower/sky.png").convert()
+            background = pygame.image.load(os.path.join(scriptDir,"images/Tower/sky.png")).convert()
 
             global musicplaying
+            global residents
+            residents = 0
 
             yposition = -2880.0  # float, vertical position to display the background. Initialized to show base of background
             wirebasex = 210.0     # constant float, initial horizontal position for wire. Future positions are based on this
@@ -248,12 +331,13 @@ class BuildingBlox():
             framecount = 0  # integer, counts the number of frames for long lasting events
             bonusblocks = 0  # list, stores the bonus points for each block in a bonus streak
             secondsleft = 0
-            residents = 0
+
             resinc = 0
             comboinc = 0
             scalecombobar = combobar
             framecount2 = 0
             endcombo = False
+            highscore = False
 
             imgheight = img.get_height()
 
@@ -284,9 +368,30 @@ class BuildingBlox():
                             else:
                                 pygame.mixer.music.unpause()
                                 musicplaying = True
+
                             '''Main Menu Button'''
                         elif 90<mousex<161 and 10<mousey<35:
-                            keep_going= False
+                            if perfect:
+                                perfect = False
+                                bonusblocks = 0
+                                residents += comboinc
+                                endcombo = True
+                                framecount2 = 96
+                                comboincdisplay = resfont.render("+"+str(comboinc), 1, (0, 255, 0))
+                                comboinc = 0
+                            blitframe = True
+                            populationlabel = myfont.render("Population: "+str(residents), 1, (0, 0, 0))
+                            floorlevel = myfont.render("Floors: "+str(len(blockslanded)), 1, (0, 0, 0))
+                            #high score
+                            if residents > data["BuildingBlox"]["highScore"]:
+                                # updating the high score with the new high score.
+                                highscore = True
+                                highscorelabel = myfont.render("New High Score!", 1, (0, 0, 0))
+
+                            '''OK button'''
+                        elif blitframe == True and 310<mousex<310+oklabel.get_width() and 275<mousey<294:
+                            updateDatabase()
+                            keep_going = False
                         else:
                             haveblock = False  # treats as if down key was pressed
                     else:
@@ -330,7 +435,7 @@ class BuildingBlox():
                         tiltdeg += 0.5
                         blockslanded[-1].setyPos(blockslanded[-1].getyPos() + 0.35)
                     #if len(blockslanded) == tower.getMaxLevel()-1:
-                    blockslanded[-1].setImg(pygame.transform.rotate(pygame.image.load(tower.getMidimg()).convert_alpha(),tiltdeg))
+                    blockslanded[-1].setImg(pygame.transform.rotate(pygame.image.load(os.path.join(scriptDir,tower.getMidimg())).convert_alpha(),tiltdeg))
 
                 '''Perfect landing effect'''
                 if perfect:
@@ -354,7 +459,7 @@ class BuildingBlox():
                         endcombo = False
 
                 '''Main loop for tower game, continues until game is finished'''
-                if len(blockslanded) < tower.getMaxLevel() and lives > 0:
+                if len(blockslanded) < tower.getMaxLevel() and lives > 0 and blitframe == False:
                     degrees += increment # increments degrees to rotate images
                     #rotates wire image
                     rotImg2 = pygame.transform.rotate(wire, degrees)
@@ -482,14 +587,14 @@ class BuildingBlox():
                                     tilt = True
 
                             if len(blockslanded) == 1:  # after first block
-                                img = pygame.image.load(tower.getMidimg()).convert_alpha()  # loads the image for a tower block to img
-                                wire = pygame.image.load("images/Tower/hookwire.png").convert_alpha()  # loads the image for the swinging wire to wire
+                                img = pygame.image.load(os.path.join(scriptDir,tower.getMidimg())).convert_alpha()  # loads the image for a tower block to img
+                                wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/hookwire.png")).convert_alpha()  # loads the image for the swinging wire to wire
                                 rotImg = pygame.transform.rotate(img, degrees)
                                 blitblock = False
 
                             elif len(blockslanded) == (tower.getMaxLevel() - 1):
-                                img = pygame.image.load(tower.getTopimg()).convert_alpha()  # loads the image for a tower block to img
-                                wire = pygame.image.load("images/Tower/wire.png").convert_alpha()  # loads the image for the swinging wire to wire
+                                img = pygame.image.load(os.path.join(scriptDir,tower.getTopimg())).convert_alpha()  # loads the image for a tower block to img
+                                wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
                                 rotImg = pygame.transform.rotate(img, 0)
                                 if tower.getMaxLevel() == 40:
                                     blockoffset = 95.0
@@ -596,6 +701,14 @@ class BuildingBlox():
 
                 else:
                     blitframe = True
+                    populationlabel = myfont.render("Population: "+str(residents), 1, (0, 0, 0))
+                    floorlevel = myfont.render("Floors: "+str(len(blockslanded)), 1, (0, 0, 0))
+                    #high score
+                    if residents> data["BuildingBlox"]["highScore"]:
+                        # updating the high score with the new high score.
+                        highscore = True
+                        highscorelabel = myfont.render("New High Score!", 1, (0, 0, 0))
+
                 #Update and refresh the display to end this frame
 
                 '''Background'''
@@ -666,8 +779,14 @@ class BuildingBlox():
                 '''Ending screen'''
                 if blitframe:
                     screen.blit(frame, (170, 100))
-                    screen.blit(againlabel, (220, 160))
-                    screen.blit(exitlabel, (230, 185))
+                    if len(blockslanded) == tower.getMaxLevel():
+                        screen.blit(completelabel, (240, 110))
+                    screen.blit(populationlabel, (220, 150))
+                    screen.blit(floorlevel, (220, 180))
+                    #high score
+                    if highscore:
+                        screen.blit(highscorelabel, (220, 240))
+                    screen.blit(oklabel, (310, 275))
 
                 pygame.display.flip()  # Refresh the display
 
