@@ -249,6 +249,7 @@ class TrafficDirector():
 
                     # quit the game if quit  is pressed
                     if event.type == QUIT:
+
                         return # returns nothing
                         """
                         The plain return command is not the correct way of doing this but it is the most efficient way.
@@ -300,7 +301,7 @@ class TrafficDirector():
                                 pauseMenu.deactivate()
 
                             elif mousePosition[1] > 370 and mousePosition[1] < 450: # if the player clicked on the quit button.
-
+                                pygame.mixer.music.stop()
                                 return # quit the game
 
 
