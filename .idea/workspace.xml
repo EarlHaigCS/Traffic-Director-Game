@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/__init__.py" afterPath="$PROJECT_DIR$/BuildingBlox/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="summative.iws" />
@@ -583,7 +581,11 @@
       <created>1400456891340</created>
       <updated>1400456891340</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated Building Blox game.">
+      <created>1400466821564</created>
+      <updated>1400466821564</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
