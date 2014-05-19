@@ -1,5 +1,5 @@
-BuildingBlox: {highScore: 173}
+BuildingBlox: {highScore: 0}
 ChooChooTrain: {highScore: 0}
-TrafficDirector: {highScore: 3050.0}
-shared_data: {anti_crime: 0, multiplier: 1.009840725820689, population: 278.0, raw_population: 275,
-  size: 2}
+TrafficDirector: {highScore: 0}
+shared_data: {anti_crime: 0, multiplier: 1, population: 100, raw_population: 100,
+  size: 1}
