@@ -15,7 +15,7 @@ pygame.init()
 pygame.mixer.init()
 
 size = (840, 640)
-
+size2=(900,600)
 screen = pygame.display.set_mode(size)  # initialize screen, the window where all the graphics are pasted on
 
 trackgrid=[]    # trackgrid is a list that contains all 64 instances of the train tracks
@@ -836,6 +836,7 @@ class ChooChooTrain():
                     pygame.display.flip()
 
         startMenu()
+        screen = pygame.display.set_mode(size2)
 
 class Sound(ChooChooTrain):  #this class is used to control the backgroud music
 
