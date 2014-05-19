@@ -32,22 +32,22 @@ trainx=520
 trainy=240
 
 specialpic=[]   #specialpic is a list that contains all the icons of the special items
-pic1 = pygame.image.load("ChooChooTrain/img/gas.jpeg")
+pic1 = pygame.image.load(os.path.join(scriptDir,"img/gas.jpeg"))
 pic1 = pygame.transform.scale(pic1,(30,30))
 specialpic.append(pic1)
-pic2=pygame.image.load("ChooChooTrain/img/bump.png")
+pic2=pygame.image.load(os.path.join(scriptDir,"img/bump.png"))
 pic2 = pygame.transform.scale(pic2,(30,30))
 specialpic.append(pic2)
 
 
 trainimg=[] # trainimg is a list that contains all the icons of the train
-train1 = pygame.image.load("ChooChooTrain/img/train.png")
+train1 = pygame.image.load(os.path.join(scriptDir,"img/train.png"))
 train1 = pygame.transform.scale(train1,(60,60))
 trainimg.append(train1)
-train2=pygame.image.load("ChooChooTrain/img/train2.png")
+train2=pygame.image.load(os.path.join(scriptDir,"img/train2.png"))
 train2 = pygame.transform.scale(train2,(60,60))
 trainimg.append(train2)
-train3=pygame.image.load("ChooChooTrain/img/train3.png")
+train3=pygame.image.load(os.path.join(scriptDir,"img/train3.png"))
 train3 = pygame.transform.scale(train3,(60,60))
 trainimg.append(train3)
 
@@ -56,17 +56,30 @@ timepergrid = 1.0     # timepergrid controls the speed of the train
 
 set1=[1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, 1,1,0,0,0,1,0,1, 1,1,1,1,1,0,1,1 ,1,1,1,1,1,1,1,1, 1,1,1,0,1,1,1,1, 1,1,1,1,1,1,1,1]
 #initialize the backgroud music
-pygame.mixer.music.load("ChooChooTrain/sound/train_music.wav")
-pygame.mixer.music.play(-1)
+
 
 diff=0   #diff is used to reset the timer
 lastgrid=28
 
 
+counter2=0
 
 class ChooChooTrain():
 
     def run(self):
+
+        # Opening the database as read-only
+        with open(os.path.join(scriptDir, "../shared_data.yaml"), 'r') as shared_data:
+            # Storing all the data inside the database to the data variable.
+            data = yaml.load(shared_data)
+
+        pygame.init()  # initializes the pygame module
+
+        pygame.mixer.music.load(os.path.join(scriptDir, "sound/train_music.wav"))
+        pygame.mixer.music.play(-1)
+
+        size = (840, 640)
+        screen= pygame.display.set_mode(size)
 
         def timereset(currenttime): #this function resets the timer everytime the game is replayed
             global  diff
@@ -230,8 +243,6 @@ class ChooChooTrain():
                 pass
 
 
-
-        counter2=0
         def setPos(num,counter):    # sets the path of the train
             global timepergrid
             global lastgrid
@@ -370,9 +381,6 @@ class ChooChooTrain():
 
             except IndexError:
                     pass
-
-
-            print counter2
             return (rx,ry,)
 
         def endScreen(time):
@@ -385,6 +393,7 @@ class ChooChooTrain():
                 clock.tick(30)
                 for ev in pygame.event.get(): #<-- returns a list of all Events in this frame
                         if ev.type == QUIT: #<-- this special event type happens when the window is closed
+                            pygame.mixer.music.stop()
                             keep_going = False
 
                         elif ev.type == pygame.MOUSEBUTTONDOWN:
@@ -396,6 +405,11 @@ class ChooChooTrain():
                                     reset()
                                     timereset(pygame.time.get_ticks())
                                     main()
+                            elif x>=515 and x<=655 and y>500 and y<=555:
+                                    pygame.mixer.music.stop()
+                                    keep_going=False
+
+
                 if keep_going==True:
                     min = time/60000
                     sec = (time-min*60000)/1000
@@ -423,7 +437,7 @@ class ChooChooTrain():
                     backgroundend = pygame.Surface(sizeend) #<-- like display, but creates a Surface object from scratch
                     backgroundend = backgroundend.convert() #<-- creates a copy of the Surface with a standard (faster)                            #    colour format
                     backgroundend.fill((0,0,0))
-                    button1 =pygame.image.load("button.png")
+                    button1 =pygame.image.load(os.path.join(scriptDir,"img/button.png"))
                     button1=button1.convert_alpha()
                     button1 = pygame.transform.scale(button1, (140,55))
                     screen.blit(backgroundend,(0,0))
@@ -459,6 +473,7 @@ class ChooChooTrain():
                 for ev in pygame.event.get(): #<-- returns a list of all Events in this frame
                         if ev.type == QUIT: #<-- this special event type happens when the window is closed
                             keep_going = False
+                            pygame.mixer.music.stop()
                         elif ev.type == pygame.MOUSEBUTTONDOWN:
                             mousepos = pygame.mouse.get_pos()
                             x = mousepos[0]
@@ -497,17 +512,17 @@ class ChooChooTrain():
                     output7 = output6Font.render("Play", 2, (255,255,255))
                     output8 = output6Font.render("Back", 2, (255,255,255))
 
-                    demo = pygame.image.load("demo.png").convert_alpha()
+                    demo = pygame.image.load(os.path.join(scriptDir,"img/demo.png")).convert_alpha()
                     demo= pygame.transform.scale(demo, (400,400))
 
-                    button = pygame.image.load("instruction_button.png").convert_alpha()
+                    button = pygame.image.load(os.path.join(scriptDir,"img/instruction_button.png")).convert_alpha()
                     button= pygame.transform.scale(button,(150,107))
                     pygame.display.set_caption("ChooChooTrain - How to play?")
                     sizeend=(840,640)
                     backgroundend = pygame.Surface(sizeend) #<-- like display, but creates a Surface object from scratch
                     backgroundend = backgroundend.convert() #<-- creates a copy of the Surface with a standard (faster)                            #    colour format
                     backgroundend.fill((0,0,0))
-                    backimg= pygame.image.load("instructions.jpg").convert()
+                    backimg= pygame.image.load(os.path.join(scriptDir,"img/instructions.jpg")).convert()
                     backimg = pygame.transform.scale(backimg, (840,640))
                     screen.blit(backgroundend,(0,0))
                     screen.blit(backimg,(0,0))
@@ -535,7 +550,7 @@ class ChooChooTrain():
 
 
         def startMenu():
-            global train2
+
             clock = pygame.time.Clock() #<-- used to control the frame rate
             keep_going = True 	        #<-- a 'flag' variable for the game loop condition
 
@@ -547,6 +562,7 @@ class ChooChooTrain():
                 for ev in pygame.event.get(): #<-- returns a list of all Events in this frame
                         if ev.type == QUIT: #<-- this special event type happens when the window is closed
                             keep_going = False
+                            pygame.mixer.music.stop()
                         elif ev.type == pygame.MOUSEBUTTONDOWN:
                             mousepos = pygame.mouse.get_pos()
                             x = mousepos[0]
@@ -561,9 +577,8 @@ class ChooChooTrain():
                                 instructions()
 
                             elif x>=250 and x<= 450 and y>= 400 and y<= 567:
-                                pass
-
-                                print "exit"
+                                pygame.mixer.music.stop()
+                                keep_going=False
                             elif x>=20 and x<=60 and y>=580 and y<=620:
                                 sound.changeSetting()
                                 sound.display()
@@ -579,15 +594,15 @@ class ChooChooTrain():
                     output4Font = pygame.font.SysFont("Settings",30)
                     output4 = output4Font.render("Exit", 2, (0,0,0))
 
-                    cloud = pygame.image.load("img/ChooChooTrain.png").convert_alpha()
+                    cloud = pygame.image.load(os.path.join(scriptDir,"img/cloud.png")).convert_alpha()
                     cloud = pygame.transform.scale(cloud, (200,167))
 
-                    pygame.display.set_caption("img/ChooChooTrain")
+                    pygame.display.set_caption("ChooChooTrain")
                     sizeend=(840,640)
                     backgroundend = pygame.Surface(sizeend) #<-- like display, but creates a Surface object from scratch
                     backgroundend = backgroundend.convert() #<-- creates a copy of the Surface with a standard (faster)                            #    colour format
                     backgroundend.fill((0,0,0))
-                    backimg= pygame.image.load("img/station.jpg").convert()
+                    backimg= pygame.image.load(os.path.join(scriptDir,"img/station.jpg")).convert()
                     backimg = pygame.transform.scale(backimg, (840,640))
 
 
@@ -614,8 +629,9 @@ class ChooChooTrain():
             global timepergrid
             global trainx
             global trainy
-
-            pygame.display.set_caption("img/ChooChooTrain") #<-- caption appears in the title bar
+            global startpoint
+            global click
+            pygame.display.set_caption("ChooChooTrain") #<-- caption appears in the title bar
             sizeright=(640,640)
             backgroundr = pygame.Surface(sizeright) #<-- like display, but creates a Surface object from scratch
             backgroundr = backgroundr.convert() #<-- creates a copy of the Surface with a standard (faster)                            #    colour format
@@ -626,7 +642,7 @@ class ChooChooTrain():
             timebox = timebox.convert()
             timebox.fill((0, 0, 0))
 
-            img = pygame.image.load("img/sky.jpg")
+            img = pygame.image.load(os.path.join(scriptDir,"img/sky.jpg"))
             img = img.convert()
             img = pygame.transform.scale(img, (200,640))
 
@@ -641,7 +657,7 @@ class ChooChooTrain():
                     temporient=randint(0,3)
                     trackgrid.append(Track(i,tempsc, 0, 0))
                     tempimg=trackgrid[i].getImage()
-                    imgs.append(pygame.image.load(tempimg))
+                    imgs.append(pygame.image.load(os.path.join(scriptDir,tempimg)))
                     imgs[i] = imgs[i].convert()
                     imgs[i] = pygame.transform.scale(imgs[i], (80,80))
                     y = (i/8)*80
@@ -666,7 +682,7 @@ class ChooChooTrain():
             keep_going = True 	        #<-- a 'flag' variable for the game loop condition
             counter=0
             counter1=0
-            counter2=0
+
             game_over=False
 
             while keep_going:
@@ -676,6 +692,7 @@ class ChooChooTrain():
                 for ev in pygame.event.get(): #<-- returns a list of all Events in this frame
                     if ev.type == QUIT: #<-- this special event type happens when the window is closed
                         keep_going = False
+                        pygame.mixer.music.stop()
                     elif ev.type == pygame.MOUSEBUTTONDOWN:
                         mousepos = pygame.mouse.get_pos()
                         x = mousepos[0]
@@ -691,6 +708,7 @@ class ChooChooTrain():
                         if game_over==False:
                             try:
                                 if trackgrid[tracknum].getLock()==False:
+
                                     trackgrid[tracknum].rotate()
                                     click.append(tracknum)
                                     try:
@@ -815,6 +833,7 @@ class ChooChooTrain():
         startMenu()
 
 class Sound(ChooChooTrain):  #this class is used to control the backgroud music
+
     img="img/speaker.png"   #img controls the icon
     play=True           #this boolean controls whether the music is playing
     x = 20              # x and y are the postions of the music icon
@@ -841,11 +860,12 @@ class Sound(ChooChooTrain):  #this class is used to control the backgroud music
         return self.y
     def display(self):  #displays the music icon on screen
         self.reset()
-        img = pygame.image.load(self.img).convert_alpha()
+        img = pygame.image.load(os.path.join(scriptDir,self.img)).convert_alpha()
         img = pygame.transform.scale(img,(40,40))
         screen.blit(img,(self.x,self.y))
 
 class Track(ChooChooTrain):  #this class is used to control the track grids
+    global screen
     sc=0
     number =0
     orient=0
@@ -941,7 +961,7 @@ class Track(ChooChooTrain):  #this class is used to control the track grids
         else:
             self.cons=1
             self.cont=0
-        imgs[self.number]=pygame.image.load(self.__image)
+        imgs[self.number]=pygame.image.load(os.path.join(scriptDir,self.__image))
         imgs[self.number] = pygame.transform.scale(imgs[self.number], (80,80))
         imgs[self.number]=pygame.transform.rotate(imgs[self.number],self.orient*(-90))
         screen.blit(imgs[self.number],(self.x,self.y))
@@ -949,14 +969,14 @@ class Track(ChooChooTrain):  #this class is used to control the track grids
     def setSc(self,o):  #set straight or curve
         self.sc =o
         self.resetImage()
-        imgs[self.number]=pygame.image.load(self.__image)
+        imgs[self.number]=pygame.image.load(os.path.join(scriptDir,self.__image))
         imgs[self.number] = pygame.transform.scale(imgs[self.number], (80,80))
         screen.blit(imgs[self.number],(self.x,self.y))
 
     def setWp(self,color):  #set the colour of the grid
         self.wp=color
         self.resetImage()
-        imgs[self.number]=pygame.image.load(self.__image)
+        imgs[self.number]=pygame.image.load(os.path.join(scriptDir,self.__image))
         imgs[self.number] = pygame.transform.scale(imgs[self.number], (80,80))
         imgs[self.number]=pygame.transform.rotate(imgs[self.number],self.orient*(-90))
         screen.blit(imgs[self.number],(self.x,self.y))
