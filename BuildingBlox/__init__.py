@@ -26,7 +26,7 @@ class BuildingBlox():
         pygame.display.set_caption("Building Blox")  # Title bar caption is set
 
         '''Music'''
-        music = pygame.mixer.music.load("sound/music.wav")
+        music = pygame.mixer.music.load(os.path.join(scriptDir, "sound/music.wav"))
         pygame.mixer.music.play(-1)
         musicplaying = True
 
@@ -104,11 +104,11 @@ class BuildingBlox():
 
         def mainMenu():
             '''Fonts and Text'''
-            myfont = pygame.font.Font("fonts/hollow.ttf", 96)
+            myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 96)
             myfont.set_bold(False)
-            myfont2 = pygame.font.Font("fonts/hollow.ttf", 56)
+            myfont2 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 56)
             myfont2.set_bold(False)
-            myfont3 = pygame.font.Font("fonts/hollow.ttf", 28)
+            myfont3 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 28)
             myfont3.set_bold(False)
             title = myfont.render("Building Blox", 1, (0, 0, 0))
             playgame = myfont2.render("Play Game!", 1, (0, 0, 0))
@@ -122,12 +122,12 @@ class BuildingBlox():
             yellowchoice = myfont2.render("Skyscraper (40 Floors)", 1, (0, 0, 0))
             backtext = myfont2.render("Back", 1, (0, 0, 0))
 
-            background = pygame.image.load("images/Menu/mainmenubk.png").convert_alpha()
-            musicbutton = pygame.image.load("images/Tower/musicbutton.png").convert_alpha()
-            blue = pygame.image.load("images/Menu/blueComp.png").convert_alpha()
-            red = pygame.image.load("images/Menu/redComp.png").convert_alpha()
-            green = pygame.image.load("images/Menu/greenComp.png").convert_alpha()
-            yellow = pygame.image.load("images/Menu/yellowComp.png").convert_alpha()
+            background = pygame.image.load(os.path.join(scriptDir,"images/Menu/mainmenubk.png")).convert_alpha()
+            musicbutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/musicbutton.png")).convert_alpha()
+            blue = pygame.image.load(os.path.join(scriptDir,"images/Menu/blueComp.png")).convert_alpha()
+            red = pygame.image.load(os.path.join(scriptDir,"images/Menu/redComp.png")).convert_alpha()
+            green = pygame.image.load(os.path.join(scriptDir,"images/Menu/greenComp.png")).convert_alpha()
+            yellow = pygame.image.load(os.path.join(scriptDir,"images/Menu/yellowComp.png")).convert_alpha()
 
             global residents
             global musicplaying
@@ -137,6 +137,7 @@ class BuildingBlox():
             menu = True
             chooselevel = False
             instructionsscreen = False
+
             while keep_going:
                 #Handle  events in the frame
                 for ev in pygame.event.get():
@@ -170,8 +171,9 @@ class BuildingBlox():
                                 menu = False
 
                                 '''Game Suite'''
-                            elif 230<mousex<81 and 340<mousey<396:
-                                pass
+                            elif 230<mousex<230+gamemenu.get_width() and 340<mousey<396:
+                                keep_going=False
+                                pygame.mixer.music.stop()
                         elif chooselevel:
                             '''10 Floors'''
                             if 70<mousex<130+bluechoice.get_width() and 110<mousey<166:
@@ -195,7 +197,6 @@ class BuildingBlox():
                             hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
                             chooselevel = False
                             menu = True
-
                         else:
                             pass
                     else:
@@ -222,6 +223,10 @@ class BuildingBlox():
                 screen.blit(musicbutton, (10,10))
                 pygame.display.flip()  # Refresh the display
 
+
+
+
+
         def buildTower(colour):
 
             if colour == 'b' :
@@ -234,32 +239,32 @@ class BuildingBlox():
                 tower = classes.YellowTower(0)
 
             '''Fonts and Text'''
-            myfont = pygame.font.Font("fonts/jtwya.ttf", 19)
+            myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/jtwya.ttf"), 19)
             myfont.set_bold(True)
-            myfont2 = pygame.font.Font("fonts/jtwya.ttf", 28)
+            myfont2 = pygame.font.Font(os.path.join(scriptDir,"fonts/jtwya.ttf"), 28)
             myfont2.set_bold(True)
             resfont = pygame.font.SysFont("monospace", 32, True)
 
             oklabel = myfont.render("OK ", 1, (0, 0, 0))
             completelabel = myfont.render("Tower Complete!", 1, (0, 0, 0))
             '''Load images'''
-            img = pygame.image.load(tower.getBottomimg()).convert_alpha()  # loads the image for a tower block to img
-            wire = pygame.image.load("images/Tower/wire.png").convert_alpha()  # loads the image for the swinging wire to wire
-            cable = pygame.image.load("images/Tower/cable.png").convert_alpha()  # loads the image for cable fir top and bottom blocks
+            img = pygame.image.load(os.path.join(scriptDir,tower.getBottomimg())).convert_alpha()  # loads the image for a tower block to img
+            wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
+            cable = pygame.image.load(os.path.join(scriptDir,"images/Tower/cable.png")).convert_alpha()  # loads the image for cable fir top and bottom blocks
 
-            heart = pygame.image.load("images/Tower/heart.png").convert_alpha()
-            frame = pygame.image.load("images/Tower/frame.png").convert_alpha()
-            floorind = pygame.image.load("images/Tower/floorindicator.png").convert_alpha()
-            resicon = pygame.image.load("images/Tower/residenticon.png").convert_alpha()
-            comboframe = pygame.image.load("images/Tower/barframe.png").convert_alpha()
-            combobar = pygame.image.load("images/Tower/bar.png").convert_alpha()
-            doge = pygame.image.load("images/Tower/doge.png").convert_alpha()
+            heart = pygame.image.load(os.path.join(scriptDir,"images/Tower/heart.png")).convert_alpha()
+            frame = pygame.image.load(os.path.join(scriptDir,"images/Tower/frame.png")).convert_alpha()
+            floorind = pygame.image.load(os.path.join(scriptDir,"images/Tower/floorindicator.png")).convert_alpha()
+            resicon = pygame.image.load(os.path.join(scriptDir,"images/Tower/residenticon.png")).convert_alpha()
+            comboframe = pygame.image.load(os.path.join(scriptDir,"images/Tower/barframe.png")).convert_alpha()
+            combobar = pygame.image.load(os.path.join(scriptDir,"images/Tower/bar.png")).convert_alpha()
+            doge = pygame.image.load(os.path.join(scriptDir,"images/Tower/doge.png")).convert_alpha()
 
-            musicbutton = pygame.image.load("images/Tower/musicbutton.png").convert_alpha()
-            mainmenubutton = pygame.image.load("images/Tower/mainmenubutton.png").convert_alpha()
+            musicbutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/musicbutton.png")).convert_alpha()
+            mainmenubutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/mainmenubutton.png")).convert_alpha()
 
             # loads the image for the skyline background to background
-            background = pygame.image.load("images/Tower/sky.png").convert()
+            background = pygame.image.load(os.path.join(scriptDir,"images/Tower/sky.png")).convert()
 
             global musicplaying
             global residents
@@ -430,7 +435,7 @@ class BuildingBlox():
                         tiltdeg += 0.5
                         blockslanded[-1].setyPos(blockslanded[-1].getyPos() + 0.35)
                     #if len(blockslanded) == tower.getMaxLevel()-1:
-                    blockslanded[-1].setImg(pygame.transform.rotate(pygame.image.load(tower.getMidimg()).convert_alpha(),tiltdeg))
+                    blockslanded[-1].setImg(pygame.transform.rotate(pygame.image.load(os.path.join(scriptDir,tower.getMidimg())).convert_alpha(),tiltdeg))
 
                 '''Perfect landing effect'''
                 if perfect:
@@ -582,14 +587,14 @@ class BuildingBlox():
                                     tilt = True
 
                             if len(blockslanded) == 1:  # after first block
-                                img = pygame.image.load(tower.getMidimg()).convert_alpha()  # loads the image for a tower block to img
-                                wire = pygame.image.load("images/Tower/hookwire.png").convert_alpha()  # loads the image for the swinging wire to wire
+                                img = pygame.image.load(os.path.join(scriptDir,tower.getMidimg())).convert_alpha()  # loads the image for a tower block to img
+                                wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/hookwire.png")).convert_alpha()  # loads the image for the swinging wire to wire
                                 rotImg = pygame.transform.rotate(img, degrees)
                                 blitblock = False
 
                             elif len(blockslanded) == (tower.getMaxLevel() - 1):
-                                img = pygame.image.load(tower.getTopimg()).convert_alpha()  # loads the image for a tower block to img
-                                wire = pygame.image.load("images/Tower/wire.png").convert_alpha()  # loads the image for the swinging wire to wire
+                                img = pygame.image.load(os.path.join(scriptDir,tower.getTopimg())).convert_alpha()  # loads the image for a tower block to img
+                                wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
                                 rotImg = pygame.transform.rotate(img, 0)
                                 if tower.getMaxLevel() == 40:
                                     blockoffset = 95.0
