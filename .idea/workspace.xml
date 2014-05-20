@@ -2,9 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="Added music to the game suite menu.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/bar.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/bar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/barframe.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/barframe.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Menu/blueComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Menu/blueComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/bump.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/bump.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/button.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/button.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/cloud.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/cloud.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/confirmation.png" afterPath="$PROJECT_DIR$/img/confirmation.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/cp.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/cp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/cw.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/cw.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/demo.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/demo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/doge.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/doge.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/floorindicator.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/floorindicator.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/frame.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/frame.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/gas.jpeg" afterPath="$PROJECT_DIR$/ChooChooTrain/img/gas.jpeg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Menu/greenComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Menu/greenComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/heart.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/heart.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/fonts/hollow.ttf" afterPath="$PROJECT_DIR$/BuildingBlox/fonts/hollow.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr1.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr2.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr3.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr4.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr5.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr6.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr7.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr8.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr8.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr9.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/instr9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/instruction_button.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/instruction_button.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/instructions.jpg" afterPath="$PROJECT_DIR$/ChooChooTrain/img/instructions.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/fonts/jtwya.ttf" afterPath="$PROJECT_DIR$/BuildingBlox/fonts/jtwya.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/leftarrow.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/leftarrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Menu/mainmenubk.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Menu/mainmenubk.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/mainmenubutton.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/mainmenubutton.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/img/menu.png" afterPath="$PROJECT_DIR$/img/menu.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/sound/music.mp3" afterPath="$PROJECT_DIR$/BuildingBlox/sound/music.mp3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/sound/music.wav" afterPath="$PROJECT_DIR$/BuildingBlox/sound/music.wav" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/musicbutton.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/musicbutton.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/mute.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/mute.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Menu/redComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Menu/redComp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Tower/residenticon.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Tower/residenticon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/instructions/rightarrow.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/instructions/rightarrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/signboard.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/signboard.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/sky.jpg" afterPath="$PROJECT_DIR$/ChooChooTrain/img/sky.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/sp.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/sp.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/speaker.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/speaker.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/station.jpg" afterPath="$PROJECT_DIR$/ChooChooTrain/img/station.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/sw.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/sw.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/train.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/train.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/train2.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/train2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/img/train3.png" afterPath="$PROJECT_DIR$/ChooChooTrain/img/train3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/sound/train_music.wav" afterPath="$PROJECT_DIR$/ChooChooTrain/sound/train_music.wav" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/images/Menu/yellowComp.png" afterPath="$PROJECT_DIR$/BuildingBlox/images/Menu/yellowComp.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/__init__.py" afterPath="$PROJECT_DIR$/BuildingBlox/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/summative.iml" afterPath="$PROJECT_DIR$/.idea/summative.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ChooChooTrain/__init__.py" afterPath="$PROJECT_DIR$/ChooChooTrain/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/classes.py" afterPath="$PROJECT_DIR$/BuildingBlox/classes.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="summative.iws" />
@@ -19,7 +70,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/summative$towerBuilding.coverage" NAME="towerBuilding Coverage Results" MODIFIED="1400432796082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
     <SUITE FILE_PATH="coverage/summative$test.coverage" NAME="test Coverage Results" MODIFIED="1398881629148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400527850154" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400545757938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/summative$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1400456390037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
     <SUITE FILE_PATH="coverage/summative$menu.coverage" NAME="menu Coverage Results" MODIFIED="1397669478037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TrafficDirector" />
     <SUITE FILE_PATH="coverage/summative$cityBuilding.coverage" NAME="cityBuilding Coverage Results" MODIFIED="1400480080940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
@@ -36,10 +87,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="35" selection-start="838" selection-end="838" vertical-scroll-proportion="0.33962265" vertical-offset="90" max-vertical-offset="10110">
+            <state line="93" column="32" selection-start="3581" selection-end="3581" vertical-scroll-proportion="0.0" vertical-offset="1095" max-vertical-offset="12315">
               <folding />
             </state>
           </provider>
@@ -54,11 +105,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="51" selection-start="3700" selection-end="3700" vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="4050">
-              <folding />
+            <state line="165" column="22" selection-start="6741" selection-end="6741" vertical-scroll-proportion="0.6284585" vertical-offset="2157" max-vertical-offset="4050">
+              <folding>
+                <element signature="e#135#148#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +138,6 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -105,9 +157,9 @@
         <option value="$PROJECT_DIR$/BuildingBlox/cityBuilding.py" />
         <option value="$PROJECT_DIR$/BuildingBlox/classes.py" />
         <option value="$PROJECT_DIR$/shared_data.yaml" />
-        <option value="$PROJECT_DIR$/BuildingBlox/__init__.py" />
         <option value="$PROJECT_DIR$/TrafficDirector/__init__.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/BuildingBlox/__init__.py" />
       </list>
     </option>
   </component>
@@ -662,7 +714,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32650602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32650602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -672,9 +724,9 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18669528" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15157895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3120482" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253012" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3253012" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3120482" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -968,13 +1020,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="51" selection-start="3700" selection-end="3700" vertical-scroll-proportion="0.0" vertical-offset="1215" max-vertical-offset="4050">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/menu.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -994,8 +1039,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="35" selection-start="838" selection-end="838" vertical-scroll-proportion="0.33962265" vertical-offset="90" max-vertical-offset="10110">
+        <state line="93" column="32" selection-start="3581" selection-end="3581" vertical-scroll-proportion="0.0" vertical-offset="1095" max-vertical-offset="12315">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="22" selection-start="6741" selection-end="6741" vertical-scroll-proportion="0.6284585" vertical-offset="2157" max-vertical-offset="4050">
+          <folding>
+            <element signature="e#135#148#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
