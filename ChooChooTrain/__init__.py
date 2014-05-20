@@ -856,10 +856,10 @@ class ChooChooTrain():
                         trainy=setPos(startpoint[counter],counter)[1]
                         counter1+=1
 
-                        if counter1%900==0:
+                        """if counter1%900==0:
                             timepergrid-=0.2
                             if timepergrid==0.0:
-                                    timepergrid=0.5
+                                    timepergrid=0.5"""
 
 
                         if counter==0 and float(counter1/(15*timepergrid))==int(counter1/(15*timepergrid)):
