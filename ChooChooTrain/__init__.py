@@ -93,15 +93,15 @@ class ChooChooTrain():
                     data["ChooChooTrain"]["highScore"] = score
                 #increasing the raw population of the city
                 if mark<50:
-                    data["shared_data"]["multiplier"]=1.1
+                    data["shared_data"]["multiplier"]+=0.1
                 elif mark<100:
-                    data["shared_data"]["multiplier"]=1.2
+                    data["shared_data"]["multiplier"]+=0.2
                 elif mark<150:
-                    data["shared_data"]["multiplier"]=1.3
+                    data["shared_data"]["multiplier"]+=0.3
                 elif mark<200:
-                    data["shared_data"]["multiplier"]=1.4
+                    data["shared_data"]["multiplier"]+=0.4
                 else:
-                    data["shared_data"]["multiplier"]=1.5
+                    data["shared_data"]["multiplier"]+=0.5
 
                 # modifying the population of the city
                 data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
