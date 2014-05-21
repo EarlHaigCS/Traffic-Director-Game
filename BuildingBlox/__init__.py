@@ -1,118 +1,144 @@
-#Tower Building Interface
+'''
+Programmer: Benjamin Li
+Program Name: BuildingBlox.py (BuildingBlox/__init__.py)
+Project Name: City Manager
+Purpose: Main file for the Building Blox game. Includes tower building and menu interfaces
+Date: May 20, 2014
+'''
+
 # imports pygame modules
 import pygame
 from pygame.locals import *
+
+# import Building Blox classes
 import classes
+
+# import python libraries
 import math
 import os
-import time
+
+# import database read/write tools
 import yaml
-import webbrowser
+
+# saves the path for the file for future use
 scriptDir = os.path.dirname(__file__)
+
+# Class for tower building game. Will be called in game suite main menu
 class BuildingBlox():
+
+    """
+    Pre: User is on game suite main menu and chooses to play Building Blox game.
+    Post: Building Blox game finishes and user returns to the game suite menu
+    Purpose: Runs the Building Blox mini game by launching the game menu
+    """
     def run(self):
 
-        # Opening the database as read-only
-        with open(os.path.join(scriptDir, "../shared_data.yaml"), 'r') as shared_data:
+        ''' Database '''
+        with open(os.path.join(scriptDir, "../shared_data.yaml"), 'r') as shared_data:  # Opening the database as read-only
             # Storing all the data inside the database to the data variable.
             data = yaml.load(shared_data)
 
-        pygame.init()  # initializes the pygame module
+        '''Pygame Display'''
+        # initializes the pygame module
+        pygame.init()
+        # initialized the font module from pygame
         pygame.font.init()
-        clock = pygame.time.Clock() # Clock initialized to control frame rate
+        # Creates and initializes clock to control frame rate
+        clock = pygame.time.Clock()
         #Set-up the main display window and the background
-        size = (640, 480)  # size is set to a tuple representing standard for standard flash games
-        screen = pygame.display.set_mode(size)  # Surface screen is set
-        pygame.display.set_caption("Building Blox")  # Title bar caption is set
+        size = (640, 480)
+        #Screen: Surface object, serves as the base of the GUI to display other surfaces on
+        screen = pygame.display.set_mode(size)
+        pygame.display.set_caption("Building Blox")  # Sets title bar caption
 
         '''Music'''
-        music = pygame.mixer.music.load(os.path.join(scriptDir, "sound/music.wav"))
-        pygame.mixer.music.play(-1)
-        musicplaying = True
+        pygame.mixer.music.load(os.path.join(scriptDir, "sound/music.wav"))
+        pygame.mixer.music.play(-1)  # Plays music (repeats indefinitely)
+        musicplaying = True  # Boolean, used to keep track of whether music is playing (True) or paused (False)
 
+        # Initializes the number of residents (score) of the tower
         residents = 0
 
         """
         Pre: The data must be defined and must contain the previous the shared_data.yaml contents.
-        Post: updates the shared data between the games based on the accomplishments in the past turn.
-        Purpose: To save the data to the database.
+        Post: Database is updated with the information from the Building Blox game
+        Purpose: To save the data from the Building Blox game to a shared database.
         """
         def updateDatabase():
             global residents
+
             # opening the shared_data.yaml file.
             with open(os.path.join(scriptDir, "../shared_data.yaml"), 'w') as shared_data:
 
+                # Checks if the score of the current game surpasses the high score recorded on the database
                 if residents > data["BuildingBlox"]["highScore"]:
-                    # updating the high score with the new high score.
+                    # updates the high score
                     data["BuildingBlox"]["highScore"] = residents
-                #increasing the raw population of the city
+
+                # Increasesthe raw population of the city
                 data["shared_data"]["raw_population"] = data["shared_data"]["raw_population"] + residents
-                # modifying the population of the city
+
+                # Updates the total population of the city
                 data["shared_data"]["population"] = round(data["shared_data"]["raw_population"] * data["shared_data"]["multiplier"],0)
 
                 """
                 A set of if statements to determine the city size.
-
-                 Although I could have used range and elif statements but because it is less likely for the population to be less than
-                6400 so using ranges uses more memory. For example if the the population is 7000, the elif statements would do 14
-                requests but using  if statements, only 7 requests will be made.
-
                 The citySize variable is used to generate the map.
                 """
                 totolpop = data["shared_data"]["population"]
                 if totolpop > 180000 :
                     citySize = 12
-
                 elif totolpop > 102400:
                     citySize = 11
-
                 elif totolpop > 51200:
                     citySize = 10
-
                 elif totolpop > 25600:
                     citySize = 9
-
                 elif totolpop > 12800:
                     citySize = 8
-
                 elif totolpop > 6400:
                     citySize = 7
-
                 elif totolpop > 3200:
                     citySize = 6
-
                 elif totolpop > 1600:
                     citySize = 5
-
                 elif totolpop > 800:
                     citySize = 4
-
                 elif totolpop > 400:
                     citySize = 3
-
                 elif totolpop > 200:
                     citySize = 2
-
                 elif totolpop > 0:
                     citySize = 1
+
                 # updating the city size in the database.
                 data["shared_data"]["size"] = citySize
 
                 # writing all the modified data to the database.
                 shared_data.write(yaml.dump(data=data))
 
+        """
+        Pre: BuildingBlox object is initialized in the game suite main menu
+        Post: Exits the Building Blox game and returns to the gain suite main menu
+        Purpose: Main menu of the Building Blox game. Calls the tower building interface. Includes instructions
+                 for the game.
+        """
         def mainMenu():
-            '''Fonts and Text'''
-            myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 96)
+
+            '''Font'''
+            myfont = pygame.font.Font(os.path.join(scriptDir, "fonts/hollow.ttf"), 96)
             myfont.set_bold(False)
-            myfont2 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 56)
+            myfont2 = pygame.font.Font(os.path.join(scriptDir, "fonts/hollow.ttf"), 56)
             myfont2.set_bold(False)
-            myfont3 = pygame.font.Font(os.path.join(scriptDir,"fonts/hollow.ttf"), 28)
+            myfont3 = pygame.font.Font(os.path.join(scriptDir, "fonts/hollow.ttf"), 28)
             myfont3.set_bold(False)
+
+            '''Text Labels'''
             title = myfont.render("Building Blox", 1, (0, 0, 0))
             playgame = myfont2.render("Play Game!", 1, (0, 0, 0))
             instructions = myfont2.render("Instructions", 1, (0, 0, 0))
             gamemenu = myfont2.render("Game Suite", 1, (0, 0, 0))
+            # High Score label also prints the high score value of the game
             hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
             difficulty = myfont2.render("Choose Difficulty:", 1, (0, 0, 0))
             bluechoice = myfont2.render("Apartment (10 Floors)", 1, (0, 0, 0))
@@ -121,44 +147,55 @@ class BuildingBlox():
             yellowchoice = myfont2.render("Skyscraper (40 Floors)", 1, (0, 0, 0))
             backtext = myfont2.render("Back", 1, (0, 0, 0))
 
+            # Background image for the menu
             background = pygame.image.load(os.path.join(scriptDir,"images/Menu/mainmenubk.png")).convert_alpha()
+            # Music toggle image
             musicbutton = pygame.image.load(os.path.join(scriptDir,"images/Tower/musicbutton.png")).convert_alpha()
+            # Four images each corresponding to one of the tower levels
             blue = pygame.image.load(os.path.join(scriptDir,"images/Menu/blueComp.png")).convert_alpha()
             red = pygame.image.load(os.path.join(scriptDir,"images/Menu/redComp.png")).convert_alpha()
             green = pygame.image.load(os.path.join(scriptDir,"images/Menu/greenComp.png")).convert_alpha()
             yellow = pygame.image.load(os.path.join(scriptDir,"images/Menu/yellowComp.png")).convert_alpha()
 
+            # Recognized that these variables are global in the run() function
             global residents
             global musicplaying
             musicplaying = True
 
-            keep_going = True
-            menu = True
-            chooselevel = False
-            instructionsscreen = False
-            instrslide = 0
+            keep_going = True  # Boolean, serves as condition for game loop to repeat
 
+            #Initialize variables used to determine where the user is at on the menu
+            menu = True  # Boolean, True if user is on the Building Blox menu
+            chooselevel = False  # Boolean, True if user is on the "choose difficulty" screen
+            instructionsscreen = False  # Boolean, True if user is viewing the instructions for the game
+
+            instrslide = 0  # integer, stores the slide of the instructions that the user is on
+
+            # Pygame display loop for the Building Blox main menu
             while keep_going:
+
                 #Handle  events in the frame
                 for ev in pygame.event.get():
                     if ev.type == QUIT:  # happens when the window is closed
                         keep_going = False
-                    elif ev.type == MOUSEBUTTONDOWN: # if the mouse was clicked
-                        mousepos = pygame.mouse.get_pos()
+
+                    elif ev.type == MOUSEBUTTONDOWN:  # if the mouse was clicked
+                        mousepos = pygame.mouse.get_pos()  # gets the position of the mouse
                         mousex = mousepos[0]
                         mousey = mousepos[1]
-                        '''Music button'''
+
+                        '''Music toggle button'''
 
                         if 10<mousex<81 and 10<mousey<35:
 
-                            if musicplaying:
+                            if musicplaying:  # pauses music if music was playing
                                 pygame.mixer.music.pause()
                                 musicplaying = False
-                            else:
+                            else:  # resumes music if music was paused
                                 pygame.mixer.music.unpause()
                                 musicplaying = True
 
-                            '''Main Menu Button'''
+                            '''Main Menu Buttons'''
                         elif menu:
                             '''Play Game'''
                             if 230<mousex<230+playgame.get_width() and 180<mousey<236:
@@ -173,32 +210,34 @@ class BuildingBlox():
 
                                 '''Game Suite'''
                             elif 230<mousex<230+gamemenu.get_width() and 340<mousey<396:
-                                keep_going=False
-                                pygame.mixer.music.stop()
+                                keep_going=False  # This causes the display to stop refreshing
+                                pygame.mixer.music.stop()  # Stops the Building Blox background music
 
+                            '''Choose Difficulty Menu'''
                         elif chooselevel:
                             '''10 Floors'''
                             if 70<mousex<130+bluechoice.get_width() and 110<mousey<166:
-                                buildTower('b')
+                                buildTower('b')  # Plays with blue tower
 
                                 '''20'''
                             elif 70<mousex<130+redchoice.get_width() and 180<mousey<236:
-                                buildTower('r')
+                                buildTower('r')  # Plays with red tower
 
                                 '''30'''
                             elif 70<mousex<130+greenchoice.get_width() and 250<mousey<306:
-                                buildTower('g')
+                                buildTower('g')  # Plays with green tower
 
                                 '''40'''
                             elif 70<mousex<130+greenchoice.get_width() and 320<mousey<376:
-                                buildTower('y')
+                                buildTower('y')  # Plays with yellow tower
 
-                                '''Back'''
-                            elif 270<mousex<270+backtext.get_width() and 400<mousey<456:
-                                pass
+                                '''Back button does not need unique commands'''
+                            # Renders the high score label in case the high score was changed after the previous game
                             hslabel = myfont3.render("High Score: "+str(data["BuildingBlox"]["highScore"])+" Residents", 1, (0, 0, 0))
                             chooselevel = False
                             menu = True
+
+                            '''Instructions'''
                         elif instructionsscreen:
                             '''Left arrow'''
                             if 5<mousex<31 and 190<mousey<290:
@@ -210,13 +249,17 @@ class BuildingBlox():
                     else:
                         pass  # does nothing for all other input events
 
-                screen.blit(background, (0, 0))
+                screen.blit(background, (0, 0))  # Background image is displayed since it is used in all parts of the
+                                                 # main menu
+                # Displays surfaces corresponding to the main menu
                 if menu:
                     screen.blit(title,(140,40))
                     screen.blit(playgame, (230,180))
                     screen.blit(instructions, (230,260))
                     screen.blit(gamemenu, (230,340))
                     screen.blit(hslabel, (20, 440))
+
+                # Displays surfaces corresponding with the choose difficulty menu
                 elif chooselevel:
                     screen.blit(difficulty,(180,30))
                     screen.blit(blue,(70,110))
@@ -228,27 +271,38 @@ class BuildingBlox():
                     screen.blit(yellow,(70,320))
                     screen.blit(yellowchoice, (130, 320))
                     screen.blit(backtext,(270,400))
+
+                # Displays surfaces corresponding with the instructions interface
                 elif instructionsscreen:
-                    if 0<instrslide<10:
+                    if 0<instrslide<10:  # Returns to main menu when instrslide is beyond the number of images in the
+                                         # instructions interface
+
+                        # Loads required images
                         slide = pygame.image.load(os.path.join(scriptDir,"images/instructions/instr"+str(instrslide)+".png")).convert_alpha()
                         leftarr = pygame.image.load(os.path.join(scriptDir,"images/instructions/leftarrow.png")).convert_alpha()
                         rightarr = pygame.image.load(os.path.join(scriptDir,"images/instructions/rightarrow.png")).convert_alpha()
                         screen.blit(slide, (0, 0))
                         screen.blit(leftarr, (5, 190))
                         screen.blit(rightarr, (609, 190))
-                    else:
+                    else:  # When the user is beyond the maximum or minimum slide, returns to the Building Blox menu
+                        # Resets variables to when user was on the main menu
                         instrslide = 0
                         instructionsscreen = False
                         menu = True
+
+                # Displays the music toggle button
                 screen.blit(musicbutton, (10,10))
+
                 pygame.display.flip()  # Refresh the display
 
-
-
-
-
+        """
+        Pre: User is on Choose Difficulty menu of the Building Blox menu and selects a difficulty
+        Post: User finishes the game and returns to the Building Blox main menu. Database is updated
+        Purpose: This the main game method for building blox. Allows the user to play the game and build a tower.
+        """
         def buildTower(colour):
 
+            # Creates different colored tower based on difficulty level chosen
             if colour == 'b' :
                 tower = classes.BlueTower(0)
             elif colour == 'r':
@@ -268,6 +322,7 @@ class BuildingBlox():
             oklabel = myfont.render("OK ", 1, (0, 0, 0))
             completelabel = myfont.render("Tower Complete!", 1, (0, 0, 0))
             perfectlabel = myfont2.render("Perfect!", 1, (0, 0, 153))
+
             '''Load images'''
             img = pygame.image.load(os.path.join(scriptDir,tower.getBottomimg())).convert_alpha()  # loads the image for a tower block to img
             wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
@@ -287,6 +342,7 @@ class BuildingBlox():
             # loads the image for the skyline background to background
             background = pygame.image.load(os.path.join(scriptDir,"images/Tower/sky.png")).convert()
 
+            # Recognized that these variables are global in the run() function
             global musicplaying
             global residents
             residents = 0
@@ -297,10 +353,10 @@ class BuildingBlox():
             wirex = 0.0  # float, horizontal distance in addition to wirebasex
             wirey = 0.0  # float, vertical distance in addition to wirebasey
             wireyinc = 2.0  # represents the amount added to wirey every frame. Changes signs every time 0 degrees is passed
-            cablex = 0.0
-            cabley = 0.0
+            cablex = 0.0  # float, horizontal position of the cable (for first and last blocks)
+            cabley = 0.0  # float, vertical position of the cable (for the first and last blocks)
 
-            screen.blit(background, (0, yposition))
+            screen.blit(background, (0, yposition))  # Places the background at the starting position
             degrees = -20  # integer, degree at which surface objects are rotated; Counterclockwise is positive
 
             # Initial rotation of tower block and wire
@@ -310,22 +366,24 @@ class BuildingBlox():
             # blockx: float, horizontal position of block surface. Calculated every frame based on position of the wire.
             blockx=float(wirex+wirebasex - (rotImg.get_width()/2))
             # blockx: float, vertical position of tower block surface. Calculated every frame based on position of the wire.
-            blocky=float(wirey + wirebasey + rotImg2.get_height()- float((rotImg.get_height()/2)))
-            blockoffset = 35.0
+            blocky=float(wirey + wirebasey + rotImg2.get_height() - float((rotImg.get_height()/2)))
+            blockoffset = 35.0  # float, value used to account for the difference in height of block images
 
+            # Displays the wire and the block onto the background
             screen.blit(rotImg2,(float(wirex + wirebasex), float(wirey + wirebasey)))
             screen.blit(rotImg, (blockx, blocky))
 
-            keep_going = True 	        # boolean, controls whether the game loop continues
+            keep_going = True  # boolean, controls whether the game loop continues
 
+            # list, stores Block objects for the landed blocks
             blockslanded = []
 
-            lives = 3
+            lives = 3  # integer, stores the number of lives left. When this hits 0, game ends
             imperfect = 0  # integer, number of imperfectly landed blocks, used to calculate sway effect
-            sway = 0.0
-            swaypos = 0.0
-            swayinc = sway/16.0
-            waitframe = 10
+            sway = 0.0  # float, horizontal number of pixels the tower needs to wobble
+            swaypos = 0.0  # float, horizontal number of pixels swayed in the current frame
+            swayinc = sway/16.0  # float, number of pixels moved per frame
+            waitframe = 10  # integer, counter variable used to make the tower stay at either end of the wobble for 10 frames
 
             #block/wire swinging variables
             increment = 1  # integer, represents the change in degrees each frame. changes signs when degrees reaches max or min
@@ -339,9 +397,9 @@ class BuildingBlox():
             oldwirex = 0.0  # integer, stores the horizontal position of block in previous frame
 
             blitblock = True  # used to prevent new block from being displayed at position previous block landed
-            backgroundinc = img.get_height()
+            backgroundinc = img.get_height()  # float, amount that the background needs to shift after block lands/is knocked out
 
-            passedlastblock = False
+            passedlastblock = False  # Boolean, True if the block lands correctly and the height of the tower increases
 
             blitframe = False  # Boolean variable, prevents the block from being displayed immediately after img change
             tilt = False  # Boolean variable, used to initiate the tilt animation after a block successfully lands
@@ -351,49 +409,52 @@ class BuildingBlox():
             perfect = False  # Boolean variable, set to True when the block lands perfectly
             framecount = 0  # integer, counts the number of frames for long lasting events
             bonusblocks = 0  # list, stores the bonus points for each block in a bonus streak
-            secondsleft = 0
+            secondsleft = 0  # integer, stores the integer value of the time left in the bonus period
 
-            resinc = 0
-            comboinc = 0
-            scalecombobar = combobar
-            framecount2 = 0
-            endcombo = False
-            highscore = False
+            resinc = 0  # integer, amount the number of residents (score) increases by after a block lands
+            comboinc = 0  # integer, tally of the number of residents to add to total residents after bonus period ends
+            scalecombobar = combobar  # Surface, a bar with lenght modified depending on time left in the bonus period
+            framecount2 = 0  # integer, counter used to display comboinc for 3 seconds (96 frames)
+            endcombo = False  # Boolean, signals when the bonus period ends in order to start displaying comboinc
+            highscore = False  # Boolean, True if the score in the current game exceeds the record on the database
 
-            imgheight = img.get_height()
-            perflanding = 0
+            imgheight = img.get_height()  # integer, stores the height of the block image, used because the image changes
+            perflanding = 0  # integer, used to count the frames in order to display 'Perfect!' after a combo starts
 
             # Game loop
             while keep_going:
 
+                # Floors constructed/Max floors label
                 floorlabel = myfont.render(str(len(blockslanded))+"/"+str(tower.getMaxLevel()), 1, (255, 255, 255))
 
                 clock.tick(32) # sets frame rate at 32 fps
 
                 #Handle  events in the frame
                 for ev in pygame.event.get():
-                    if ev.type == QUIT:  # happens when the window is closed
-                        keep_going = False
+                    if ev.type == QUIT:
+                        keep_going = False  # exits Building Blox when window is closed
 
-                    elif ev.type == KEYDOWN: # if it was a keyboard press
-                        if ev.key == K_DOWN:    # when down arror key is pressed
+                    elif ev.type == KEYDOWN:
+                        if ev.key == K_DOWN:  # drops block
                             haveblock = False
-                    elif ev.type == MOUSEBUTTONDOWN: # if the mouse was clicked
+
+                    elif ev.type == MOUSEBUTTONDOWN:  # if the mouse was clicked
                         mousepos = pygame.mouse.get_pos()
                         mousex = mousepos[0]
                         mousey = mousepos[1]
+
                         '''Music button'''
                         if 10<mousex<81 and 10<mousey<35:
-                            if musicplaying:
+                            if musicplaying:  # Pauses music if music was playing
                                 pygame.mixer.music.pause()
                                 musicplaying = False
-                            else:
+                            else:  # Resumes music if music was paused
                                 pygame.mixer.music.unpause()
                                 musicplaying = True
 
                             '''Main Menu Button'''
                         elif 90<mousex<161 and 10<mousey<35:
-                            if perfect:
+                            if perfect:  # Stops combo if user goes back to menu
                                 perfect = False
                                 bonusblocks = 0
                                 residents += comboinc
@@ -401,10 +462,12 @@ class BuildingBlox():
                                 framecount2 = 96
                                 comboincdisplay = resfont.render("+"+str(comboinc), 1, (0, 255, 0))
                                 comboinc = 0
+                            # Displays summary for the game
                             blitframe = True
                             populationlabel = myfont.render("Population: "+str(residents), 1, (0, 0, 0))
                             floorlevel = myfont.render("Floors: "+str(len(blockslanded)), 1, (0, 0, 0))
-                            #high score
+
+                            # Checks if high score was achieved
                             if residents > data["BuildingBlox"]["highScore"]:
                                 # updating the high score with the new high score.
                                 highscore = True
@@ -412,7 +475,7 @@ class BuildingBlox():
 
                             '''OK button'''
                         elif blitframe == True and 310<mousex<310+oklabel.get_width() and 275<mousey<294:
-                            updateDatabase()
+                            updateDatabase()  # Updates the database
                             keep_going = False
                         else:
                             haveblock = False  # treats as if down key was pressed
@@ -420,18 +483,17 @@ class BuildingBlox():
                         pass  # does nothing for all other input events
 
                 '''Shifting the background gradually'''
-
-                if imgheight - backgroundinc > 10:
+                if imgheight - backgroundinc > 10:  # shifts 10 pixels until there are few than 10 pixels left
                     backgroundinc += 10.0
                     if shiftdown:
                         yposition += 10.0
                         for blk in blockslanded:
                             blk.setyPos(blk.getyPos() + 10.0)
                     else:
-                        yposition -= 10.0
+                        yposition -= 10.0  # shifts opposite direction when block is knocked off
                         for blk in blockslanded:
                             blk.setyPos(blk.getyPos() - 10.0)
-                elif imgheight - backgroundinc < 10:
+                elif imgheight - backgroundinc < 10:  # shifts remaining pixels
 
                     if shiftdown:
                         yposition += (imgheight - backgroundinc)
@@ -456,7 +518,6 @@ class BuildingBlox():
                     elif tiltdeg<0:
                         tiltdeg += 0.5
                         blockslanded[-1].setyPos(blockslanded[-1].getyPos() + 0.35)
-                    #if len(blockslanded) == tower.getMaxLevel()-1:
                     blockslanded[-1].setImg(pygame.transform.rotate(pygame.image.load(os.path.join(scriptDir,tower.getMidimg())).convert_alpha(),tiltdeg))
 
                 '''Perfect landing effect'''
@@ -496,7 +557,6 @@ class BuildingBlox():
                         waitframe = 10
                     else:
                         waitframe -= 1
-
 
                     # updates oldwirex in case tower block needs to fall
                     oldwirex = wirex
@@ -578,6 +638,7 @@ class BuildingBlox():
                                     swayinc = -(sway/16.0)
                             residents += resinc
 
+                            # Increases sway effect as the tower gets taller
                             if len(blockslanded) % 5 == 0 and imperfect > 0:
                                 sway += 5.0
 
@@ -586,7 +647,7 @@ class BuildingBlox():
                                 comboinc += secondsleft*bonusblocks
                                 bonusblocks += 1
 
-
+                            # Stores the block that was just landed into a list
                             newblock = classes.Block(blockx-swaypos, blocky, resinc, img)
                             blockslanded.append(newblock)
 
@@ -596,12 +657,11 @@ class BuildingBlox():
                             passedlastblock = False
                             fallxisset = False  # changes boolean value so that fallx may be reset
                             falltime = 0  # sets amount of frames after falling back to 0
-                            eligible = True
+                            eligible = True  # blocks are eligible to be checked for landing position hit/miss
 
+                            '''Landing tilt animation'''
                             if tower.getMaxLevel() > len(blockslanded) > 1:
                                 backgroundinc = 0
-
-                                '''Landing tilt animation'''
                                 if abs(blockdiff) >= 6:
                                     tiltdeg = blockdiff * -0.5
                                     tiltimg = pygame.transform.rotate(blockslanded[-1].getImg(), tiltdeg)
@@ -615,14 +675,14 @@ class BuildingBlox():
                                 rotImg = pygame.transform.rotate(img, degrees)
                                 blitblock = False
 
-                            elif len(blockslanded) == (tower.getMaxLevel() - 1):
+                            elif len(blockslanded) == (tower.getMaxLevel() - 1):  # Before last block
                                 img = pygame.image.load(os.path.join(scriptDir,tower.getTopimg())).convert_alpha()  # loads the image for a tower block to img
                                 wire = pygame.image.load(os.path.join(scriptDir,"images/Tower/wire.png")).convert_alpha()  # loads the image for the swinging wire to wire
                                 rotImg = pygame.transform.rotate(img, 0)
                                 if tower.getMaxLevel() == 40:
                                     blockoffset = 95.0
                                 blitblock = False
-                        else:
+                        else:  # If block misses/knocks off previous block, or is still falling
                             falltime += 1  # increase the number of frames after block started falling
                             if fallxisset == False:  # only sets horizontal velocity once
                                 if tumble:
@@ -651,16 +711,12 @@ class BuildingBlox():
                                     falldegrees += wireyinc/2  # rotates the block a little every frame until it is upright
                                 blockx += fallx
 
+                            # Spins the block when tumbling
                             rotImg = pygame.transform.rotate(img, falldegrees*tumbleinc)
-
-                            #New coordinates for block is calculated
-
-
-                            blocky = blocky + fally
-
+                            blocky += fally
 
                             if eligible == True:  # Prevents block to be evaluated (hit/miss) more than once
-                                blockdiff = 100
+                                blockdiff = 100 # Assigns an arbitrary number so that the first block cannot miss
                                 '''condition for the block to stop falling'''
                                 if len(blockslanded)==0:   # passed y coordinate of bottom
                                     if blocky > 323:
@@ -676,6 +732,7 @@ class BuildingBlox():
                                         tumble = True
                                         imgheight = img.get_height()
 
+                                        # Ends combo
                                         if perfect:
                                             perfect = False
                                             bonusblocks = 0
@@ -685,19 +742,22 @@ class BuildingBlox():
                                             comboincdisplay = resfont.render("+"+str(comboinc), 1, (0, 255, 0))
                                             comboinc = 0
 
-                                        '''needs to start new parabola'''
+                                        # Starts a new parabolic path for motion
                                         fallxisset = False  # changes boolean value so that fallx may be reset
                                         falltime = 0  # sets amount of frames after falling back to 0
                                         tempimg = blockslanded[-1].getImg()
                                     eligible = False
+
                             else:
                                 '''Tumbling animation when current block knocks out previous block'''
                                 if tumble:
+                                    # Position of previous block is calculated based on position of current block while tumbling
                                     if tower.getMaxLevel()-1 > len(blockslanded) > 1:
                                         blockslanded[-1].setImg(pygame.transform.rotate(tempimg, falldegrees))
                                         blockslanded[-1].setxPos(blockslanded[-1].getxPos()-fallx)
                                         blockslanded[-1].setyPos(blocky+img.get_height())
-                                if blocky > 480:
+
+                                if blocky > 480:  # When the block drops beyond the screen
                                     lives -= 1
                                     haveblock = True  # changes boolean value so that a new block may be generated back on the wire
                                     passedlastblock = False
@@ -712,6 +772,7 @@ class BuildingBlox():
                                         shiftdown = False
                                         tumbleinc = 1.0
                                     tumble = False  # reset the tumble variable for the next block drop
+                                    #Ends combo
                                     if perfect:
                                         perfect = False
                                         bonusblocks = 0
@@ -720,19 +781,16 @@ class BuildingBlox():
                                         framecount2 = 96
                                         comboincdisplay = resfont.render("+"+str(comboinc), 1, (0, 255, 0))
                                         comboinc = 0
-
-
-                else:
+                else:  # When the game ends
+                    # Displays endgame summary
                     blitframe = True
                     populationlabel = myfont.render("Population: "+str(residents), 1, (0, 0, 0))
                     floorlevel = myfont.render("Floors: "+str(len(blockslanded)), 1, (0, 0, 0))
-                    #high score
+                    # Check if score for this game is higher than the one recorded in the database
                     if residents> data["BuildingBlox"]["highScore"]:
                         # updating the high score with the new high score.
                         highscore = True
                         highscorelabel = myfont.render("New High Score!", 1, (0, 0, 0))
-
-                #Update and refresh the display to end this frame
 
                 '''Background'''
                 screen.blit(background, (0, yposition))
@@ -819,4 +877,4 @@ class BuildingBlox():
                 pygame.display.flip()  # Refresh the display
 
             return residents
-        mainMenu()
+        mainMenu() # runs the main menu to start the Building Blox game
