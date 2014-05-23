@@ -304,13 +304,13 @@ class BuildingBlox():
 
             # Creates different colored tower based on difficulty level chosen
             if colour == 'b' :
-                tower = classes.BlueTower(0)
+                tower = classes.BlueTower()
             elif colour == 'r':
-                tower = classes.RedTower(0)
+                tower = classes.RedTower()
             elif colour == 'g':
-                tower = classes.GreenTower(0)
+                tower = classes.GreenTower()
             elif colour == 'y':
-                tower = classes.YellowTower(0)
+                tower = classes.YellowTower()
 
             '''Fonts and Text'''
             myfont = pygame.font.Font(os.path.join(scriptDir,"fonts/jtwya.ttf"), 19)
@@ -869,7 +869,7 @@ class BuildingBlox():
                         screen.blit(completelabel, (240, 110))
                     screen.blit(populationlabel, (220, 150))
                     screen.blit(floorlevel, (220, 180))
-                    #high score
+                    # If the user achieved a high score in the current game
                     if highscore:
                         screen.blit(highscorelabel, (220, 240))
                     screen.blit(oklabel, (310, 275))
