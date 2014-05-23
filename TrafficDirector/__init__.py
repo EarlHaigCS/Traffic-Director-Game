@@ -16,6 +16,13 @@ import webbrowser
 scriptDir = os.path.dirname(__file__)
 
 class TrafficDirector():
+    """
+    Pre: -
+    Post: Runs the game by calling the run() method.
+    Purpose: To start the 'Traffic Director' game.
+    """
+    def __init__(self):
+        self.run()
 
     """
     Pre: The TrafficDirector() class must be defined

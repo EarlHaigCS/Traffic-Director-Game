@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="Updated Building Blox game.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BuildingBlox/__init__.py" afterPath="$PROJECT_DIR$/BuildingBlox/__init__.py" />
+    <list default="true" id="9ddcfc38-8643-43c3-bc82-54803fec35eb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sources.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/__init__.py" afterPath="$PROJECT_DIR$/TrafficDirector/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared_data.yaml" afterPath="$PROJECT_DIR$/shared_data.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TrafficDirector/sources.txt" afterPath="$PROJECT_DIR$/TrafficDirector/sources.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/summative.iml" afterPath="$PROJECT_DIR$/.idea/summative.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -17,12 +20,12 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/summative$test.coverage" NAME="test Coverage Results" MODIFIED="1398881629148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/summative$menu.coverage" NAME="menu Coverage Results" MODIFIED="1397669478037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TrafficDirector" />
     <SUITE FILE_PATH="coverage/summative$towerBuilding.coverage" NAME="towerBuilding Coverage Results" MODIFIED="1400432796082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
-    <SUITE FILE_PATH="coverage/summative$cityBuilding.coverage" NAME="cityBuilding Coverage Results" MODIFIED="1400480080940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
+    <SUITE FILE_PATH="coverage/summative$test.coverage" NAME="test Coverage Results" MODIFIED="1398881629148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400860306409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/summative$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1400456390037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
-    <SUITE FILE_PATH="coverage/summative$main.coverage" NAME="main Coverage Results" MODIFIED="1400648092249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/summative$menu.coverage" NAME="menu Coverage Results" MODIFIED="1397669478037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TrafficDirector" />
+    <SUITE FILE_PATH="coverage/summative$cityBuilding.coverage" NAME="cityBuilding Coverage Results" MODIFIED="1400480080940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/BuildingBlox" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -36,48 +39,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="879" column="21" selection-start="48918" selection-end="48918" vertical-scroll-proportion="1.0389909" vertical-offset="14037" max-vertical-offset="15062">
-              <folding>
-                <element signature="e#252#265#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shared_data.yaml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shared_data.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ChooChooTrain/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="91" column="68" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.0" vertical-offset="761" max-vertical-offset="18921">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="classes.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BuildingBlox/classes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="21" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="2040" max-vertical-offset="3264">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="325" column="42" selection-start="14784" selection-end="14784" vertical-scroll-proportion="0.0" vertical-offset="5525" max-vertical-offset="9656">
+            <state line="569" column="0" selection-start="28705" selection-end="28705" vertical-scroll-proportion="0.0" vertical-offset="8535" max-vertical-offset="8625">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sources.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TrafficDirector/sources.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="43" selection-start="351" selection-end="351" vertical-scroll-proportion="0.30898875" vertical-offset="0" max-vertical-offset="534">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sources.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sources.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="28" selection-start="420" selection-end="420" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
               <folding />
             </state>
           </provider>
@@ -86,7 +69,16 @@
       <file leaf-file-name="main.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="0" selection-start="3987" selection-end="3987" vertical-scroll-proportion="0.0" vertical-offset="1904" max-vertical-offset="4590">
+            <state line="242" column="28" selection-start="9948" selection-end="9948" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3975">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shared_data.yaml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shared_data.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="211" selection-end="211" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="165">
               <folding />
             </state>
           </provider>
@@ -100,6 +92,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -110,25 +103,25 @@
         <option value="$PROJECT_DIR$/TrafficDirector/classes.py" />
         <option value="$PROJECT_DIR$/easygui.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/ChooChooTrain/__init__.py" />
         <option value="$PROJECT_DIR$/BuildingBlox/__ini__.py" />
         <option value="$PROJECT_DIR$/new_game_shared_data.yaml" />
         <option value="$PROJECT_DIR$/BuildingBlox/bbclasses.py" />
         <option value="$PROJECT_DIR$/BuildingBlox/towerBuilding.py" />
         <option value="$PROJECT_DIR$/BuildingBlox/cityBuilding.py" />
         <option value="$PROJECT_DIR$/BuildingBlox/classes.py" />
+        <option value="$PROJECT_DIR$/BuildingBlox/__init__.py" />
+        <option value="$PROJECT_DIR$/TrafficDirector/__init__.py" />
         <option value="$PROJECT_DIR$/shared_data.yaml" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/TrafficDirector/__init__.py" />
-        <option value="$PROJECT_DIR$/ChooChooTrain/__init__.py" />
-        <option value="$PROJECT_DIR$/BuildingBlox/__init__.py" />
+        <option value="$PROJECT_DIR$/sources.txt" />
+        <option value="$PROJECT_DIR$/TrafficDirector/sources.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -156,6 +149,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -171,6 +165,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summative" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sound" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -230,27 +238,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="summative" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="summative" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BuildingBlox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -277,8 +266,8 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="940" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="FullScreen" value="false" />
-    <property name="SearchEverywhereHistory" value="&#10;‘’‘&#10;main&#10;-&#10;.0" />
+    <property name="FullScreen" value="true" />
+    <property name="SearchEverywhereHistory" value="‘’‘&#10;main&#10;-&#10;.0" />
     <property name="dynamic.classpath" value="false" />
     <property name="database.results.filters.show" value="false" />
     <property name="full.screen.before.presentation.mode" value="true" />
@@ -644,7 +633,23 @@
       <created>1400482899205</created>
       <updated>1400482899205</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Edited so that music stops after returning to game suite menu.">
+      <created>1400483623672</created>
+      <updated>1400483623672</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Edited so that music stops after returning to game suite menu.">
+      <created>1400485345400</created>
+      <updated>1400485345400</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Deleted useless citybuilding file.">
+      <created>1400485630962</created>
+      <updated>1400485630962</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added music to the game suite menu.">
+      <created>1400545786642</created>
+      <updated>1400545786642</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -668,20 +673,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32692307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32650602" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32650602" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.077083334" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20243205" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15157895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.02736842" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.12526315" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253012" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32451922" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3120482" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -722,55 +727,21 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
     <MESSAGE value="Update for TBI for BB." />
     <MESSAGE value="Updated Building Blox game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Building Blox game." />
+    <MESSAGE value="Edited so that music stops after returning to game suite menu." />
+    <MESSAGE value="Deleted useless citybuilding file." />
+    <MESSAGE value="Added music to the game suite menu." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added music to the game suite menu." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="309" column="82" selection-start="14109" selection-end="14109" vertical-scroll-proportion="0.0" vertical-offset="4635" max-vertical-offset="8400">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="3987" selection-end="3987" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="4050">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="20" selection-start="3036" selection-end="3036" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="3859">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="5" selection-start="2907" selection-end="2907" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="3842">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="288" column="0" selection-start="10170" selection-end="10170" vertical-scroll-proportion="0.0" vertical-offset="4203" max-vertical-offset="4695" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/menu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="123" column="8" selection-start="4618" selection-end="4618" vertical-scroll-proportion="0.0" vertical-offset="1845" max-vertical-offset="2370" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="18" selection-start="190" selection-end="190" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165" />
@@ -941,11 +912,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="23" selection-start="2232" selection-end="2232" vertical-scroll-proportion="-0.10149254" vertical-offset="1819" max-vertical-offset="3451" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/new_game_shared_data.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="29" selection-start="0" selection-end="183" vertical-scroll-proportion="0.097841725" vertical-offset="0" max-vertical-offset="695" />
@@ -956,11 +922,6 @@
         <state line="152" column="0" selection-start="5725" selection-end="5931" vertical-scroll-proportion="0.0" vertical-offset="2018" max-vertical-offset="3825" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/sources.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="751" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
@@ -969,47 +930,83 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="0" selection-start="3987" selection-end="3987" vertical-scroll-proportion="0.0" vertical-offset="1680" max-vertical-offset="4050">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/BuildingBlox/classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="21" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3247">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="325" column="42" selection-start="14784" selection-end="14784" vertical-scroll-proportion="0.0" vertical-offset="5525" max-vertical-offset="9520">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared_data.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="187">
-          <folding />
-        </state>
+        <state line="120" column="21" selection-start="2120" selection-end="2120" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3247" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ChooChooTrain/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="68" selection-start="2966" selection-end="2966" vertical-scroll-proportion="0.0" vertical-offset="761" max-vertical-offset="18921">
+        <state line="148" column="0" selection-start="5026" selection-end="5026" vertical-scroll-proportion="0.0" vertical-offset="2516" max-vertical-offset="19040" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/menu.psd">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/speaker.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/status.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/menu.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/img/confirmation.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrafficDirector/classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="107" column="10" selection-start="3093" selection-end="3093" vertical-scroll-proportion="-3.0337079" vertical-offset="3180" max-vertical-offset="3795" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared_data.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="211" selection-end="211" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="165">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/BuildingBlox/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="879" column="21" selection-start="48918" selection-end="48918" vertical-scroll-proportion="1.0389909" vertical-offset="14037" max-vertical-offset="15062">
-          <folding>
-            <element signature="e#252#265#0" expanded="true" />
-          </folding>
+        <state line="61" column="11" selection-start="2108" selection-end="2108" vertical-scroll-proportion="-11.359039" vertical-offset="9885" max-vertical-offset="13275" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrafficDirector/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="569" column="0" selection-start="28705" selection-end="28705" vertical-scroll-proportion="0.0" vertical-offset="3889" max-vertical-offset="8625">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="242" column="28" selection-start="9948" selection-end="9948" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sources.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="28" selection-start="420" selection-end="420" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrafficDirector/sources.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="43" selection-start="351" selection-end="351" vertical-scroll-proportion="0.30898875" vertical-offset="0" max-vertical-offset="534">
+          <folding />
         </state>
       </provider>
     </entry>

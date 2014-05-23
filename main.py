@@ -90,17 +90,16 @@ while running: # the main loop of the game
                 if 850 < mousePosition[0] < 900 and 0 < mousePosition[1] < 100:
 
                     gameMenu = False
-                    welcomeMenu= True
+                    welcomeMenu= True #activating the welcome menu
 
                 if mousePosition[1] > 400 and mousePosition[1] < 580:
 
                     # Starting traffic director  game
                     if mousePosition[0] > 670 and  mousePosition[0] < 850:
 
-                        trafficDirector = TrafficDirector()
-                        trafficDirector.run()
+                        TrafficDirector()
                         pygame.display.set_caption("City Manager")  # Title bar caption is set
-
+                        # playing the music for the menu
                         pygame.mixer.music.load(os.path.join(scriptDir, "sound/sims.wav"))
                         pygame.mixer.music.play(-1)
                         if musicplaying == False:
@@ -113,7 +112,7 @@ while running: # the main loop of the game
                         buildingBlox.run()
                         screen = pygame.display.set_mode((900,600))  # Surface screen is set
                         pygame.display.set_caption("City Manager")  # Title bar caption is set
-
+                        # playing the music for the menu
                         pygame.mixer.music.load(os.path.join(scriptDir, "sound/sims.wav"))
                         pygame.mixer.music.play(-1)
                         if musicplaying == False:
@@ -125,7 +124,7 @@ while running: # the main loop of the game
                         chooChooTrain.run()
                         screen = pygame.display.set_mode((900,600))  # Surface screen is set
                         pygame.display.set_caption("City Manager")  # Title bar caption is set
-
+                        # playing the music for the menu
                         pygame.mixer.music.load(os.path.join(scriptDir, "sound/sims.wav"))
                         pygame.mixer.music.play(-1)
                         if musicplaying == False:
@@ -153,6 +152,7 @@ while running: # the main loop of the game
                         # starting a new game and activating the game menu.
                     elif 320<mousePosition[0] < 580 and  320< mousePosition[1] < 360:
                         areyousure = True
+                        # asking if the user is sure to start a new game.
                         confirmation = pygame.image.load(os.path.join(scriptDir, "img/confirmation.png")).convert_alpha()
 
                         # if the user pressed the quit
@@ -163,7 +163,7 @@ while running: # the main loop of the game
     if welcomeMenu:
         image = pygame.image.load(os.path.join(scriptDir, "img/menu.png")).convert_alpha()
         screen.blit(image, (0,0))
-        if areyousure:
+        if areyousure: # asking the user to confirm it's action
             screen.blit(confirmation, (250, 160))
     # drawing the game menu on the screen.
     elif gameMenu:

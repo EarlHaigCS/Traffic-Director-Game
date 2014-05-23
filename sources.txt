@@ -7,17 +7,11 @@ Py2app - to export the game as an executable file for OS X.
 Py2exe - to export the game as an executable file for Windows.
 
 
-Code Pieces Taken from Other Open Source Projects:
-
-Menu - to create the menus of the game. (https://github.com/BradStevenson/Pygame-Menu)
-
 Images Used:
 
 icons are taken mostly from https://www.iconfinder.com/
-some graphics were taken from a flash game called Alien Dash.
 some vecotrs were taken from http://www.deviantart.com/.
 
-
-Music and Sounds:
+Music:
 
 All the sound effects were taken from http://soundbible.com/
